@@ -1,9 +1,16 @@
 //
-//  Prefix header
+//  App55-Prefix.pch
+//  App55
 //
-//  The contents of this file are implicitly included at the beginning of every source file.
+//  Created by Tim Behrsin on 19/10/2013.
+//  Copyright (c) 2013 App55 Ltd. All rights reserved.
 //
 
-#ifdef __OBJC__
-    #import <Foundation/Foundation.h>
+#ifndef App55_App55_Prefix_pch
+#define App55_App55_Prefix_pch
+
+// Include any system framework and library headers here that should be included in all compilation units.
+// You will also need to set the Prefix Header build setting of one or more of your targets to reference this file.
+#import "A55CardCreateRequest.h"
+
 #endif

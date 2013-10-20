@@ -15,8 +15,8 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "227547031812AD4900E38782"
-               BuildableName = "App55.framework"
-               BlueprintName = "App55"
+               BuildableName = "app55-ios.framework"
+               BlueprintName = "app55-ios"
                ReferencedContainer = "container:App55.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>

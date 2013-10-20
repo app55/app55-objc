@@ -13,9 +13,147 @@
 		227547191812AD4900E38782 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 227547181812AD4900E38782 /* XCTest.framework */; };
 		2275471A1812AD4900E38782 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 227547071812AD4900E38782 /* Foundation.framework */; };
 		2275471C1812AD4900E38782 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2275471B1812AD4900E38782 /* UIKit.framework */; };
-		227547211812AD4900E38782 /* App55.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 227547041812AD4900E38782 /* App55.framework */; };
+		227547211812AD4900E38782 /* app55-ios.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 227547041812AD4900E38782 /* app55-ios.framework */; };
 		227547271812AD4900E38782 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 227547251812AD4900E38782 /* InfoPlist.strings */; };
 		227547291812AD4900E38782 /* App55Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = 227547281812AD4900E38782 /* App55Tests.m */; };
+		227547341812AF1C00E38782 /* A55Gateway.h in Headers */ = {isa = PBXBuildFile; fileRef = 227547321812AF1C00E38782 /* A55Gateway.h */; };
+		227547351812AF1C00E38782 /* A55Gateway.m in Sources */ = {isa = PBXBuildFile; fileRef = 227547331812AF1C00E38782 /* A55Gateway.m */; };
+		227547381812AFF500E38782 /* A55Environment.h in Headers */ = {isa = PBXBuildFile; fileRef = 227547361812AFF500E38782 /* A55Environment.h */; };
+		227547391812AFF500E38782 /* A55Environment.m in Sources */ = {isa = PBXBuildFile; fileRef = 227547371812AFF500E38782 /* A55Environment.m */; };
+		2275473D1812DAA300E38782 /* A55Object.h in Headers */ = {isa = PBXBuildFile; fileRef = 2275473B1812DAA300E38782 /* A55Object.h */; };
+		2275473E1812DAA300E38782 /* A55Object.m in Sources */ = {isa = PBXBuildFile; fileRef = 2275473C1812DAA300E38782 /* A55Object.m */; };
+		227547411812DDED00E38782 /* A55User.h in Headers */ = {isa = PBXBuildFile; fileRef = 2275473F1812DDED00E38782 /* A55User.h */; };
+		227547421812DDED00E38782 /* A55User.m in Sources */ = {isa = PBXBuildFile; fileRef = 227547401812DDED00E38782 /* A55User.m */; };
+		227547451812DE9100E38782 /* A55Name.h in Headers */ = {isa = PBXBuildFile; fileRef = 227547431812DE9100E38782 /* A55Name.h */; };
+		227547461812DE9100E38782 /* A55Name.m in Sources */ = {isa = PBXBuildFile; fileRef = 227547441812DE9100E38782 /* A55Name.m */; };
+		227547491812DEF000E38782 /* A55Address.h in Headers */ = {isa = PBXBuildFile; fileRef = 227547471812DEF000E38782 /* A55Address.h */; };
+		2275474A1812DEF000E38782 /* A55Address.m in Sources */ = {isa = PBXBuildFile; fileRef = 227547481812DEF000E38782 /* A55Address.m */; };
+		227547521812DFC400E38782 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 227547511812DFC400E38782 /* Cocoa.framework */; };
+		2275475C1812DFC400E38782 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2275475A1812DFC400E38782 /* InfoPlist.strings */; };
+		227547601812DFC400E38782 /* App55.m in Sources */ = {isa = PBXBuildFile; fileRef = 2275475F1812DFC400E38782 /* App55.m */; };
+		2275477B1812E04400E38782 /* A55Card.h in Headers */ = {isa = PBXBuildFile; fileRef = 227547791812E04400E38782 /* A55Card.h */; };
+		2275477C1812E04400E38782 /* A55Card.h in Headers */ = {isa = PBXBuildFile; fileRef = 227547791812E04400E38782 /* A55Card.h */; };
+		2275477D1812E04400E38782 /* A55Card.m in Sources */ = {isa = PBXBuildFile; fileRef = 2275477A1812E04400E38782 /* A55Card.m */; };
+		2275477E1812E04400E38782 /* A55Card.m in Sources */ = {isa = PBXBuildFile; fileRef = 2275477A1812E04400E38782 /* A55Card.m */; };
+		2275477F1812E04400E38782 /* A55Card.m in Sources */ = {isa = PBXBuildFile; fileRef = 2275477A1812E04400E38782 /* A55Card.m */; };
+		227547821812E10100E38782 /* A55Transaction.h in Headers */ = {isa = PBXBuildFile; fileRef = 227547801812E10100E38782 /* A55Transaction.h */; };
+		227547831812E10100E38782 /* A55Transaction.h in Headers */ = {isa = PBXBuildFile; fileRef = 227547801812E10100E38782 /* A55Transaction.h */; };
+		227547841812E10100E38782 /* A55Transaction.m in Sources */ = {isa = PBXBuildFile; fileRef = 227547811812E10100E38782 /* A55Transaction.m */; };
+		227547851812E10100E38782 /* A55Transaction.m in Sources */ = {isa = PBXBuildFile; fileRef = 227547811812E10100E38782 /* A55Transaction.m */; };
+		227547861812E10100E38782 /* A55Transaction.m in Sources */ = {isa = PBXBuildFile; fileRef = 227547811812E10100E38782 /* A55Transaction.m */; };
+		2280BE031812E20100CE0B23 /* A55Schedule.h in Headers */ = {isa = PBXBuildFile; fileRef = 2280BE011812E20100CE0B23 /* A55Schedule.h */; };
+		2280BE041812E20100CE0B23 /* A55Schedule.m in Sources */ = {isa = PBXBuildFile; fileRef = 2280BE021812E20100CE0B23 /* A55Schedule.m */; };
+		2280BE061812E73A00CE0B23 /* A55ObjectTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 2280BE051812E73A00CE0B23 /* A55ObjectTests.m */; };
+		2280BE0B1812EBB600CE0B23 /* App55-Prefix.pch in Headers */ = {isa = PBXBuildFile; fileRef = 2280BE0A1812EBB600CE0B23 /* App55-Prefix.pch */; };
+		2280BE0C1812EBEA00CE0B23 /* App55.h in Headers */ = {isa = PBXBuildFile; fileRef = 227547101812AD4900E38782 /* App55.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		2280BE0E1812EC0C00CE0B23 /* A55Object.m in Sources */ = {isa = PBXBuildFile; fileRef = 2275473C1812DAA300E38782 /* A55Object.m */; };
+		2280BE0F1812EC0F00CE0B23 /* A55Object.h in Headers */ = {isa = PBXBuildFile; fileRef = 2275473B1812DAA300E38782 /* A55Object.h */; };
+		2280BE101812EC1B00CE0B23 /* A55User.h in Headers */ = {isa = PBXBuildFile; fileRef = 2275473F1812DDED00E38782 /* A55User.h */; };
+		2280BE111812EC1B00CE0B23 /* A55User.m in Sources */ = {isa = PBXBuildFile; fileRef = 227547401812DDED00E38782 /* A55User.m */; };
+		2280BE121812EC1B00CE0B23 /* A55Name.h in Headers */ = {isa = PBXBuildFile; fileRef = 227547431812DE9100E38782 /* A55Name.h */; };
+		2280BE131812EC1B00CE0B23 /* A55Name.m in Sources */ = {isa = PBXBuildFile; fileRef = 227547441812DE9100E38782 /* A55Name.m */; };
+		2280BE141812EC1B00CE0B23 /* A55Address.h in Headers */ = {isa = PBXBuildFile; fileRef = 227547471812DEF000E38782 /* A55Address.h */; };
+		2280BE151812EC1B00CE0B23 /* A55Address.m in Sources */ = {isa = PBXBuildFile; fileRef = 227547481812DEF000E38782 /* A55Address.m */; };
+		2280BE161812EC1B00CE0B23 /* A55Schedule.h in Headers */ = {isa = PBXBuildFile; fileRef = 2280BE011812E20100CE0B23 /* A55Schedule.h */; };
+		2280BE171812EC1B00CE0B23 /* A55Schedule.m in Sources */ = {isa = PBXBuildFile; fileRef = 2280BE021812E20100CE0B23 /* A55Schedule.m */; };
+		2280BE181812EC1B00CE0B23 /* App55.h in Headers */ = {isa = PBXBuildFile; fileRef = 227547101812AD4900E38782 /* App55.h */; };
+		2280BE191812EC1B00CE0B23 /* A55Gateway.h in Headers */ = {isa = PBXBuildFile; fileRef = 227547321812AF1C00E38782 /* A55Gateway.h */; };
+		2280BE1A1812EC1B00CE0B23 /* A55Gateway.m in Sources */ = {isa = PBXBuildFile; fileRef = 227547331812AF1C00E38782 /* A55Gateway.m */; };
+		2280BE1B1812EC1B00CE0B23 /* A55Environment.h in Headers */ = {isa = PBXBuildFile; fileRef = 227547361812AFF500E38782 /* A55Environment.h */; };
+		2280BE1C1812EC1B00CE0B23 /* A55Environment.m in Sources */ = {isa = PBXBuildFile; fileRef = 227547371812AFF500E38782 /* A55Environment.m */; };
+		2280BE1D1812EC2B00CE0B23 /* A55User.m in Sources */ = {isa = PBXBuildFile; fileRef = 227547401812DDED00E38782 /* A55User.m */; };
+		2280BE1E1812EC2B00CE0B23 /* A55Name.m in Sources */ = {isa = PBXBuildFile; fileRef = 227547441812DE9100E38782 /* A55Name.m */; };
+		2280BE1F1812EC2B00CE0B23 /* A55Address.m in Sources */ = {isa = PBXBuildFile; fileRef = 227547481812DEF000E38782 /* A55Address.m */; };
+		2280BE201812EC2B00CE0B23 /* A55Schedule.m in Sources */ = {isa = PBXBuildFile; fileRef = 2280BE021812E20100CE0B23 /* A55Schedule.m */; };
+		2280BE211812EC2B00CE0B23 /* App55.m in Sources */ = {isa = PBXBuildFile; fileRef = 227547111812AD4900E38782 /* App55.m */; };
+		2280BE221812EC2B00CE0B23 /* A55Gateway.m in Sources */ = {isa = PBXBuildFile; fileRef = 227547331812AF1C00E38782 /* A55Gateway.m */; };
+		2280BE231812EC2B00CE0B23 /* A55Environment.m in Sources */ = {isa = PBXBuildFile; fileRef = 227547371812AFF500E38782 /* A55Environment.m */; };
+		2280BE271813146A00CE0B23 /* A55Message.h in Headers */ = {isa = PBXBuildFile; fileRef = 2280BE251813146A00CE0B23 /* A55Message.h */; };
+		2280BE281813146A00CE0B23 /* A55Message.m in Sources */ = {isa = PBXBuildFile; fileRef = 2280BE261813146A00CE0B23 /* A55Message.m */; };
+		2280BE2B1813150300CE0B23 /* A55Request.h in Headers */ = {isa = PBXBuildFile; fileRef = 2280BE291813150300CE0B23 /* A55Request.h */; };
+		2280BE2C1813150300CE0B23 /* A55Request.m in Sources */ = {isa = PBXBuildFile; fileRef = 2280BE2A1813150300CE0B23 /* A55Request.m */; };
+		2280BE2D1813421B00CE0B23 /* A55Object.m in Sources */ = {isa = PBXBuildFile; fileRef = 2275473C1812DAA300E38782 /* A55Object.m */; };
+		2280BE3018135C7200CE0B23 /* A55Response.h in Headers */ = {isa = PBXBuildFile; fileRef = 2280BE2E18135C7200CE0B23 /* A55Response.h */; };
+		2280BE3118135C7200CE0B23 /* A55Response.m in Sources */ = {isa = PBXBuildFile; fileRef = 2280BE2F18135C7200CE0B23 /* A55Response.m */; };
+		2280BE3518135CC300CE0B23 /* A55CardCreateRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = 2280BE3318135CC300CE0B23 /* A55CardCreateRequest.h */; };
+		2280BE3618135CC300CE0B23 /* A55CardCreateRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 2280BE3418135CC300CE0B23 /* A55CardCreateRequest.m */; };
+		2280BE3918137EB500CE0B23 /* A55JsonParser.h in Headers */ = {isa = PBXBuildFile; fileRef = 2280BE3718137EB500CE0B23 /* A55JsonParser.h */; };
+		2280BE3A18137EB500CE0B23 /* A55JsonParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 2280BE3818137EB500CE0B23 /* A55JsonParser.m */; };
+		2280BE3B181381E800CE0B23 /* A55CardCreateRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 2280BE3418135CC300CE0B23 /* A55CardCreateRequest.m */; };
+		2280BE3C181381E900CE0B23 /* A55CardCreateRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 2280BE3418135CC300CE0B23 /* A55CardCreateRequest.m */; };
+		2280BE3D181381ED00CE0B23 /* A55Response.m in Sources */ = {isa = PBXBuildFile; fileRef = 2280BE2F18135C7200CE0B23 /* A55Response.m */; };
+		2280BE3E181381EE00CE0B23 /* A55Response.m in Sources */ = {isa = PBXBuildFile; fileRef = 2280BE2F18135C7200CE0B23 /* A55Response.m */; };
+		2280BE3F181381F100CE0B23 /* A55Request.m in Sources */ = {isa = PBXBuildFile; fileRef = 2280BE2A1813150300CE0B23 /* A55Request.m */; };
+		2280BE40181381F100CE0B23 /* A55Request.m in Sources */ = {isa = PBXBuildFile; fileRef = 2280BE2A1813150300CE0B23 /* A55Request.m */; };
+		2280BE41181381F400CE0B23 /* A55Message.m in Sources */ = {isa = PBXBuildFile; fileRef = 2280BE261813146A00CE0B23 /* A55Message.m */; };
+		2280BE42181381F400CE0B23 /* A55Message.m in Sources */ = {isa = PBXBuildFile; fileRef = 2280BE261813146A00CE0B23 /* A55Message.m */; };
+		2280BE431813820100CE0B23 /* A55JsonParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 2280BE3818137EB500CE0B23 /* A55JsonParser.m */; };
+		2280BE441813820100CE0B23 /* A55JsonParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 2280BE3818137EB500CE0B23 /* A55JsonParser.m */; };
+		2280BE4E1813855E00CE0B23 /* A55CardDeleteRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = 2280BE4C1813855E00CE0B23 /* A55CardDeleteRequest.h */; };
+		2280BE4F1813855E00CE0B23 /* A55CardDeleteRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = 2280BE4C1813855E00CE0B23 /* A55CardDeleteRequest.h */; };
+		2280BE501813855E00CE0B23 /* A55CardDeleteRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 2280BE4D1813855E00CE0B23 /* A55CardDeleteRequest.m */; };
+		2280BE511813855E00CE0B23 /* A55CardDeleteRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 2280BE4D1813855E00CE0B23 /* A55CardDeleteRequest.m */; };
+		2280BE521813855E00CE0B23 /* A55CardDeleteRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 2280BE4D1813855E00CE0B23 /* A55CardDeleteRequest.m */; };
+		2280BE551813858A00CE0B23 /* A55CardListRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = 2280BE531813858A00CE0B23 /* A55CardListRequest.h */; };
+		2280BE561813858A00CE0B23 /* A55CardListRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = 2280BE531813858A00CE0B23 /* A55CardListRequest.h */; };
+		2280BE571813858A00CE0B23 /* A55CardListRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 2280BE541813858A00CE0B23 /* A55CardListRequest.m */; };
+		2280BE581813858A00CE0B23 /* A55CardListRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 2280BE541813858A00CE0B23 /* A55CardListRequest.m */; };
+		2280BE591813858A00CE0B23 /* A55CardListRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 2280BE541813858A00CE0B23 /* A55CardListRequest.m */; };
+		2280BE5C181385A900CE0B23 /* A55UserAuthenticateRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = 2280BE5A181385A900CE0B23 /* A55UserAuthenticateRequest.h */; };
+		2280BE5D181385A900CE0B23 /* A55UserAuthenticateRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = 2280BE5A181385A900CE0B23 /* A55UserAuthenticateRequest.h */; };
+		2280BE5E181385A900CE0B23 /* A55UserAuthenticateRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 2280BE5B181385A900CE0B23 /* A55UserAuthenticateRequest.m */; };
+		2280BE5F181385A900CE0B23 /* A55UserAuthenticateRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 2280BE5B181385A900CE0B23 /* A55UserAuthenticateRequest.m */; };
+		2280BE60181385A900CE0B23 /* A55UserAuthenticateRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 2280BE5B181385A900CE0B23 /* A55UserAuthenticateRequest.m */; };
+		2280BE63181385C200CE0B23 /* A55UserCreateRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = 2280BE61181385C200CE0B23 /* A55UserCreateRequest.h */; };
+		2280BE64181385C200CE0B23 /* A55UserCreateRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = 2280BE61181385C200CE0B23 /* A55UserCreateRequest.h */; };
+		2280BE65181385C200CE0B23 /* A55UserCreateRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 2280BE62181385C200CE0B23 /* A55UserCreateRequest.m */; };
+		2280BE66181385C200CE0B23 /* A55UserCreateRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 2280BE62181385C200CE0B23 /* A55UserCreateRequest.m */; };
+		2280BE67181385C200CE0B23 /* A55UserCreateRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 2280BE62181385C200CE0B23 /* A55UserCreateRequest.m */; };
+		2280BE6A181385D300CE0B23 /* A55UserGetRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = 2280BE68181385D300CE0B23 /* A55UserGetRequest.h */; };
+		2280BE6B181385D300CE0B23 /* A55UserGetRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = 2280BE68181385D300CE0B23 /* A55UserGetRequest.h */; };
+		2280BE6C181385D300CE0B23 /* A55UserGetRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 2280BE69181385D300CE0B23 /* A55UserGetRequest.m */; };
+		2280BE6D181385D300CE0B23 /* A55UserGetRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 2280BE69181385D300CE0B23 /* A55UserGetRequest.m */; };
+		2280BE6E181385D300CE0B23 /* A55UserGetRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 2280BE69181385D300CE0B23 /* A55UserGetRequest.m */; };
+		2280BE71181385E900CE0B23 /* A55UserUpdateRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = 2280BE6F181385E900CE0B23 /* A55UserUpdateRequest.h */; };
+		2280BE72181385E900CE0B23 /* A55UserUpdateRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = 2280BE6F181385E900CE0B23 /* A55UserUpdateRequest.h */; };
+		2280BE73181385E900CE0B23 /* A55UserUpdateRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 2280BE70181385E900CE0B23 /* A55UserUpdateRequest.m */; };
+		2280BE74181385E900CE0B23 /* A55UserUpdateRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 2280BE70181385E900CE0B23 /* A55UserUpdateRequest.m */; };
+		2280BE75181385E900CE0B23 /* A55UserUpdateRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 2280BE70181385E900CE0B23 /* A55UserUpdateRequest.m */; };
+		2280BE781813860100CE0B23 /* A55TransactionCreateRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = 2280BE761813860100CE0B23 /* A55TransactionCreateRequest.h */; };
+		2280BE791813860100CE0B23 /* A55TransactionCreateRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = 2280BE761813860100CE0B23 /* A55TransactionCreateRequest.h */; };
+		2280BE7A1813860100CE0B23 /* A55TransactionCreateRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 2280BE771813860100CE0B23 /* A55TransactionCreateRequest.m */; };
+		2280BE7B1813860100CE0B23 /* A55TransactionCreateRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 2280BE771813860100CE0B23 /* A55TransactionCreateRequest.m */; };
+		2280BE7C1813860100CE0B23 /* A55TransactionCreateRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 2280BE771813860100CE0B23 /* A55TransactionCreateRequest.m */; };
+		2280BE7F1813861E00CE0B23 /* A55TransactionCommitRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = 2280BE7D1813861E00CE0B23 /* A55TransactionCommitRequest.h */; };
+		2280BE801813861E00CE0B23 /* A55TransactionCommitRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = 2280BE7D1813861E00CE0B23 /* A55TransactionCommitRequest.h */; };
+		2280BE811813861E00CE0B23 /* A55TransactionCommitRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 2280BE7E1813861E00CE0B23 /* A55TransactionCommitRequest.m */; };
+		2280BE821813861E00CE0B23 /* A55TransactionCommitRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 2280BE7E1813861E00CE0B23 /* A55TransactionCommitRequest.m */; };
+		2280BE831813861E00CE0B23 /* A55TransactionCommitRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 2280BE7E1813861E00CE0B23 /* A55TransactionCommitRequest.m */; };
+		2280BE861813863900CE0B23 /* A55ScheduleCreateRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = 2280BE841813863900CE0B23 /* A55ScheduleCreateRequest.h */; };
+		2280BE871813863900CE0B23 /* A55ScheduleCreateRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = 2280BE841813863900CE0B23 /* A55ScheduleCreateRequest.h */; };
+		2280BE881813863900CE0B23 /* A55ScheduleCreateRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 2280BE851813863900CE0B23 /* A55ScheduleCreateRequest.m */; };
+		2280BE891813863900CE0B23 /* A55ScheduleCreateRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 2280BE851813863900CE0B23 /* A55ScheduleCreateRequest.m */; };
+		2280BE8A1813863900CE0B23 /* A55ScheduleCreateRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 2280BE851813863900CE0B23 /* A55ScheduleCreateRequest.m */; };
+		2280BE8D1813865700CE0B23 /* A55ScheduleDeleteRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = 2280BE8B1813865600CE0B23 /* A55ScheduleDeleteRequest.h */; };
+		2280BE8E1813865700CE0B23 /* A55ScheduleDeleteRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = 2280BE8B1813865600CE0B23 /* A55ScheduleDeleteRequest.h */; };
+		2280BE8F1813865700CE0B23 /* A55ScheduleDeleteRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 2280BE8C1813865600CE0B23 /* A55ScheduleDeleteRequest.m */; };
+		2280BE901813865700CE0B23 /* A55ScheduleDeleteRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 2280BE8C1813865600CE0B23 /* A55ScheduleDeleteRequest.m */; };
+		2280BE911813865700CE0B23 /* A55ScheduleDeleteRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 2280BE8C1813865600CE0B23 /* A55ScheduleDeleteRequest.m */; };
+		2280BE941813866B00CE0B23 /* A55ScheduleGetRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = 2280BE921813866B00CE0B23 /* A55ScheduleGetRequest.h */; };
+		2280BE951813866B00CE0B23 /* A55ScheduleGetRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = 2280BE921813866B00CE0B23 /* A55ScheduleGetRequest.h */; };
+		2280BE961813866B00CE0B23 /* A55ScheduleGetRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 2280BE931813866B00CE0B23 /* A55ScheduleGetRequest.m */; };
+		2280BE971813866B00CE0B23 /* A55ScheduleGetRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 2280BE931813866B00CE0B23 /* A55ScheduleGetRequest.m */; };
+		2280BE981813866B00CE0B23 /* A55ScheduleGetRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 2280BE931813866B00CE0B23 /* A55ScheduleGetRequest.m */; };
+		2280BE9B1813868000CE0B23 /* A55ScheduleListRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = 2280BE991813868000CE0B23 /* A55ScheduleListRequest.h */; };
+		2280BE9C1813868000CE0B23 /* A55ScheduleListRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = 2280BE991813868000CE0B23 /* A55ScheduleListRequest.h */; };
+		2280BE9D1813868000CE0B23 /* A55ScheduleListRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 2280BE9A1813868000CE0B23 /* A55ScheduleListRequest.m */; };
+		2280BE9E1813868000CE0B23 /* A55ScheduleListRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 2280BE9A1813868000CE0B23 /* A55ScheduleListRequest.m */; };
+		2280BE9F1813868000CE0B23 /* A55ScheduleListRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 2280BE9A1813868000CE0B23 /* A55ScheduleListRequest.m */; };
+		2280BEA21813869B00CE0B23 /* A55ScheduleUpdateRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = 2280BEA01813869B00CE0B23 /* A55ScheduleUpdateRequest.h */; };
+		2280BEA31813869B00CE0B23 /* A55ScheduleUpdateRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = 2280BEA01813869B00CE0B23 /* A55ScheduleUpdateRequest.h */; };
+		2280BEA41813869B00CE0B23 /* A55ScheduleUpdateRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 2280BEA11813869B00CE0B23 /* A55ScheduleUpdateRequest.m */; };
+		2280BEA51813869B00CE0B23 /* A55ScheduleUpdateRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 2280BEA11813869B00CE0B23 /* A55ScheduleUpdateRequest.m */; };
+		2280BEA61813869B00CE0B23 /* A55ScheduleUpdateRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 2280BEA11813869B00CE0B23 /* A55ScheduleUpdateRequest.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,11 +174,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		227547041812AD4900E38782 /* App55.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework.static; includeInIndex = 0; path = App55.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		227547041812AD4900E38782 /* app55-ios.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework.static; includeInIndex = 0; path = "app55-ios.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
 		227547071812AD4900E38782 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		2275470B1812AD4900E38782 /* App55-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "App55-Info.plist"; sourceTree = "<group>"; };
 		2275470D1812AD4900E38782 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		2275470F1812AD4900E38782 /* App55-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "App55-Prefix.pch"; sourceTree = "<group>"; };
 		227547101812AD4900E38782 /* App55.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = App55.h; sourceTree = "<group>"; };
 		227547111812AD4900E38782 /* App55.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = App55.m; sourceTree = "<group>"; };
 		227547171812AD4900E38782 /* App55Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = App55Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -49,6 +186,72 @@
 		227547241812AD4900E38782 /* App55Tests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "App55Tests-Info.plist"; sourceTree = "<group>"; };
 		227547261812AD4900E38782 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		227547281812AD4900E38782 /* App55Tests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = App55Tests.m; sourceTree = "<group>"; };
+		227547321812AF1C00E38782 /* A55Gateway.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = A55Gateway.h; sourceTree = "<group>"; };
+		227547331812AF1C00E38782 /* A55Gateway.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = A55Gateway.m; sourceTree = "<group>"; };
+		227547361812AFF500E38782 /* A55Environment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = A55Environment.h; sourceTree = "<group>"; };
+		227547371812AFF500E38782 /* A55Environment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = A55Environment.m; sourceTree = "<group>"; };
+		2275473B1812DAA300E38782 /* A55Object.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = A55Object.h; path = domain/A55Object.h; sourceTree = "<group>"; };
+		2275473C1812DAA300E38782 /* A55Object.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = A55Object.m; path = domain/A55Object.m; sourceTree = "<group>"; };
+		2275473F1812DDED00E38782 /* A55User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = A55User.h; path = domain/A55User.h; sourceTree = "<group>"; };
+		227547401812DDED00E38782 /* A55User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = A55User.m; path = domain/A55User.m; sourceTree = "<group>"; };
+		227547431812DE9100E38782 /* A55Name.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = A55Name.h; path = domain/A55Name.h; sourceTree = "<group>"; };
+		227547441812DE9100E38782 /* A55Name.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = A55Name.m; path = domain/A55Name.m; sourceTree = "<group>"; };
+		227547471812DEF000E38782 /* A55Address.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = A55Address.h; sourceTree = "<group>"; };
+		227547481812DEF000E38782 /* A55Address.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = A55Address.m; sourceTree = "<group>"; };
+		227547501812DFC400E38782 /* app55-osx.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = "app55-osx.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		227547511812DFC400E38782 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = Library/Frameworks/Cocoa.framework; sourceTree = DEVELOPER_DIR; };
+		227547541812DFC400E38782 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		227547551812DFC400E38782 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		227547561812DFC400E38782 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
+		227547591812DFC400E38782 /* App55-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "App55-Info.plist"; sourceTree = "<group>"; };
+		2275475B1812DFC400E38782 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		2275475D1812DFC400E38782 /* App55-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "App55-Prefix.pch"; sourceTree = "<group>"; };
+		2275475E1812DFC400E38782 /* App55.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = App55.h; sourceTree = "<group>"; };
+		2275475F1812DFC400E38782 /* App55.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = App55.m; sourceTree = "<group>"; };
+		227547791812E04400E38782 /* A55Card.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = A55Card.h; path = domain/A55Card.h; sourceTree = "<group>"; };
+		2275477A1812E04400E38782 /* A55Card.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = A55Card.m; path = domain/A55Card.m; sourceTree = "<group>"; };
+		227547801812E10100E38782 /* A55Transaction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = A55Transaction.h; path = domain/A55Transaction.h; sourceTree = "<group>"; };
+		227547811812E10100E38782 /* A55Transaction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = A55Transaction.m; path = domain/A55Transaction.m; sourceTree = "<group>"; };
+		2280BE011812E20100CE0B23 /* A55Schedule.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = A55Schedule.h; path = domain/A55Schedule.h; sourceTree = "<group>"; };
+		2280BE021812E20100CE0B23 /* A55Schedule.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = A55Schedule.m; path = domain/A55Schedule.m; sourceTree = "<group>"; };
+		2280BE051812E73A00CE0B23 /* A55ObjectTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = A55ObjectTests.m; sourceTree = "<group>"; };
+		2280BE0A1812EBB600CE0B23 /* App55-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "App55-Prefix.pch"; sourceTree = "<group>"; };
+		2280BE251813146A00CE0B23 /* A55Message.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = A55Message.h; sourceTree = "<group>"; };
+		2280BE261813146A00CE0B23 /* A55Message.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = A55Message.m; sourceTree = "<group>"; };
+		2280BE291813150300CE0B23 /* A55Request.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = A55Request.h; sourceTree = "<group>"; };
+		2280BE2A1813150300CE0B23 /* A55Request.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = A55Request.m; sourceTree = "<group>"; };
+		2280BE2E18135C7200CE0B23 /* A55Response.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = A55Response.h; sourceTree = "<group>"; };
+		2280BE2F18135C7200CE0B23 /* A55Response.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = A55Response.m; sourceTree = "<group>"; };
+		2280BE3318135CC300CE0B23 /* A55CardCreateRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = A55CardCreateRequest.h; path = messages/A55CardCreateRequest.h; sourceTree = "<group>"; };
+		2280BE3418135CC300CE0B23 /* A55CardCreateRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = A55CardCreateRequest.m; path = messages/A55CardCreateRequest.m; sourceTree = "<group>"; };
+		2280BE3718137EB500CE0B23 /* A55JsonParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = A55JsonParser.h; sourceTree = "<group>"; };
+		2280BE3818137EB500CE0B23 /* A55JsonParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = A55JsonParser.m; sourceTree = "<group>"; };
+		2280BE4C1813855E00CE0B23 /* A55CardDeleteRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = A55CardDeleteRequest.h; path = messages/A55CardDeleteRequest.h; sourceTree = "<group>"; };
+		2280BE4D1813855E00CE0B23 /* A55CardDeleteRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = A55CardDeleteRequest.m; path = messages/A55CardDeleteRequest.m; sourceTree = "<group>"; };
+		2280BE531813858A00CE0B23 /* A55CardListRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = A55CardListRequest.h; path = messages/A55CardListRequest.h; sourceTree = "<group>"; };
+		2280BE541813858A00CE0B23 /* A55CardListRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = A55CardListRequest.m; path = messages/A55CardListRequest.m; sourceTree = "<group>"; };
+		2280BE5A181385A900CE0B23 /* A55UserAuthenticateRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = A55UserAuthenticateRequest.h; path = messages/A55UserAuthenticateRequest.h; sourceTree = "<group>"; };
+		2280BE5B181385A900CE0B23 /* A55UserAuthenticateRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = A55UserAuthenticateRequest.m; path = messages/A55UserAuthenticateRequest.m; sourceTree = "<group>"; };
+		2280BE61181385C200CE0B23 /* A55UserCreateRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = A55UserCreateRequest.h; path = messages/A55UserCreateRequest.h; sourceTree = "<group>"; };
+		2280BE62181385C200CE0B23 /* A55UserCreateRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = A55UserCreateRequest.m; path = messages/A55UserCreateRequest.m; sourceTree = "<group>"; };
+		2280BE68181385D300CE0B23 /* A55UserGetRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = A55UserGetRequest.h; path = messages/A55UserGetRequest.h; sourceTree = "<group>"; };
+		2280BE69181385D300CE0B23 /* A55UserGetRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = A55UserGetRequest.m; path = messages/A55UserGetRequest.m; sourceTree = "<group>"; };
+		2280BE6F181385E900CE0B23 /* A55UserUpdateRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = A55UserUpdateRequest.h; path = messages/A55UserUpdateRequest.h; sourceTree = "<group>"; };
+		2280BE70181385E900CE0B23 /* A55UserUpdateRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = A55UserUpdateRequest.m; path = messages/A55UserUpdateRequest.m; sourceTree = "<group>"; };
+		2280BE761813860100CE0B23 /* A55TransactionCreateRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = A55TransactionCreateRequest.h; path = messages/A55TransactionCreateRequest.h; sourceTree = "<group>"; };
+		2280BE771813860100CE0B23 /* A55TransactionCreateRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = A55TransactionCreateRequest.m; path = messages/A55TransactionCreateRequest.m; sourceTree = "<group>"; };
+		2280BE7D1813861E00CE0B23 /* A55TransactionCommitRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = A55TransactionCommitRequest.h; path = messages/A55TransactionCommitRequest.h; sourceTree = "<group>"; };
+		2280BE7E1813861E00CE0B23 /* A55TransactionCommitRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = A55TransactionCommitRequest.m; path = messages/A55TransactionCommitRequest.m; sourceTree = "<group>"; };
+		2280BE841813863900CE0B23 /* A55ScheduleCreateRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = A55ScheduleCreateRequest.h; path = messages/A55ScheduleCreateRequest.h; sourceTree = "<group>"; };
+		2280BE851813863900CE0B23 /* A55ScheduleCreateRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = A55ScheduleCreateRequest.m; path = messages/A55ScheduleCreateRequest.m; sourceTree = "<group>"; };
+		2280BE8B1813865600CE0B23 /* A55ScheduleDeleteRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = A55ScheduleDeleteRequest.h; path = messages/A55ScheduleDeleteRequest.h; sourceTree = "<group>"; };
+		2280BE8C1813865600CE0B23 /* A55ScheduleDeleteRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = A55ScheduleDeleteRequest.m; path = messages/A55ScheduleDeleteRequest.m; sourceTree = "<group>"; };
+		2280BE921813866B00CE0B23 /* A55ScheduleGetRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = A55ScheduleGetRequest.h; path = messages/A55ScheduleGetRequest.h; sourceTree = "<group>"; };
+		2280BE931813866B00CE0B23 /* A55ScheduleGetRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = A55ScheduleGetRequest.m; path = messages/A55ScheduleGetRequest.m; sourceTree = "<group>"; };
+		2280BE991813868000CE0B23 /* A55ScheduleListRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = A55ScheduleListRequest.h; path = messages/A55ScheduleListRequest.h; sourceTree = "<group>"; };
+		2280BE9A1813868000CE0B23 /* A55ScheduleListRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = A55ScheduleListRequest.m; path = messages/A55ScheduleListRequest.m; sourceTree = "<group>"; };
+		2280BEA01813869B00CE0B23 /* A55ScheduleUpdateRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = A55ScheduleUpdateRequest.h; path = messages/A55ScheduleUpdateRequest.h; sourceTree = "<group>"; };
+		2280BEA11813869B00CE0B23 /* A55ScheduleUpdateRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = A55ScheduleUpdateRequest.m; path = messages/A55ScheduleUpdateRequest.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,8 +269,16 @@
 			files = (
 				227547191812AD4900E38782 /* XCTest.framework in Frameworks */,
 				2275471C1812AD4900E38782 /* UIKit.framework in Frameworks */,
-				227547211812AD4900E38782 /* App55.framework in Frameworks */,
+				227547211812AD4900E38782 /* app55-ios.framework in Frameworks */,
 				2275471A1812AD4900E38782 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2275474C1812DFC400E38782 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				227547521812DFC400E38782 /* Cocoa.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -79,6 +290,7 @@
 			children = (
 				227547091812AD4900E38782 /* App55 */,
 				227547221812AD4900E38782 /* App55Tests */,
+				227547571812DFC400E38782 /* App55 */,
 				227547061812AD4900E38782 /* Frameworks */,
 				227547051812AD4900E38782 /* Products */,
 			);
@@ -87,8 +299,9 @@
 		227547051812AD4900E38782 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				227547041812AD4900E38782 /* App55.framework */,
+				227547041812AD4900E38782 /* app55-ios.framework */,
 				227547171812AD4900E38782 /* App55Tests.xctest */,
+				227547501812DFC400E38782 /* app55-osx.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -99,6 +312,8 @@
 				227547071812AD4900E38782 /* Foundation.framework */,
 				227547181812AD4900E38782 /* XCTest.framework */,
 				2275471B1812AD4900E38782 /* UIKit.framework */,
+				227547511812DFC400E38782 /* Cocoa.framework */,
+				227547531812DFC400E38782 /* Other Frameworks */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -106,9 +321,19 @@
 		227547091812AD4900E38782 /* App55 */ = {
 			isa = PBXGroup;
 			children = (
+				2280BE241813145B00CE0B23 /* Messages */,
+				2275473A1812DA6E00E38782 /* Domain */,
 				227547101812AD4900E38782 /* App55.h */,
 				227547111812AD4900E38782 /* App55.m */,
+				227547321812AF1C00E38782 /* A55Gateway.h */,
+				227547331812AF1C00E38782 /* A55Gateway.m */,
+				227547361812AFF500E38782 /* A55Environment.h */,
+				227547371812AFF500E38782 /* A55Environment.m */,
+				2275473B1812DAA300E38782 /* A55Object.h */,
+				2275473C1812DAA300E38782 /* A55Object.m */,
 				2275470A1812AD4900E38782 /* Supporting Files */,
+				2280BE3718137EB500CE0B23 /* A55JsonParser.h */,
+				2280BE3818137EB500CE0B23 /* A55JsonParser.m */,
 			);
 			path = App55;
 			sourceTree = "<group>";
@@ -118,7 +343,7 @@
 			children = (
 				2275470B1812AD4900E38782 /* App55-Info.plist */,
 				2275470C1812AD4900E38782 /* InfoPlist.strings */,
-				2275470F1812AD4900E38782 /* App55-Prefix.pch */,
+				2280BE0A1812EBB600CE0B23 /* App55-Prefix.pch */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -127,6 +352,7 @@
 			isa = PBXGroup;
 			children = (
 				227547281812AD4900E38782 /* App55Tests.m */,
+				2280BE051812E73A00CE0B23 /* A55ObjectTests.m */,
 				227547231812AD4900E38782 /* Supporting Files */,
 			);
 			path = App55Tests;
@@ -141,6 +367,96 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		2275473A1812DA6E00E38782 /* Domain */ = {
+			isa = PBXGroup;
+			children = (
+				2275473F1812DDED00E38782 /* A55User.h */,
+				227547401812DDED00E38782 /* A55User.m */,
+				227547431812DE9100E38782 /* A55Name.h */,
+				227547441812DE9100E38782 /* A55Name.m */,
+				227547471812DEF000E38782 /* A55Address.h */,
+				227547481812DEF000E38782 /* A55Address.m */,
+				227547791812E04400E38782 /* A55Card.h */,
+				2275477A1812E04400E38782 /* A55Card.m */,
+				227547801812E10100E38782 /* A55Transaction.h */,
+				227547811812E10100E38782 /* A55Transaction.m */,
+				2280BE011812E20100CE0B23 /* A55Schedule.h */,
+				2280BE021812E20100CE0B23 /* A55Schedule.m */,
+			);
+			name = Domain;
+			sourceTree = "<group>";
+		};
+		227547531812DFC400E38782 /* Other Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				227547541812DFC400E38782 /* Foundation.framework */,
+				227547551812DFC400E38782 /* CoreData.framework */,
+				227547561812DFC400E38782 /* AppKit.framework */,
+			);
+			name = "Other Frameworks";
+			sourceTree = "<group>";
+		};
+		227547571812DFC400E38782 /* App55 */ = {
+			isa = PBXGroup;
+			children = (
+				2275475E1812DFC400E38782 /* App55.h */,
+				2275475F1812DFC400E38782 /* App55.m */,
+				227547581812DFC400E38782 /* Supporting Files */,
+			);
+			path = App55;
+			sourceTree = "<group>";
+		};
+		227547581812DFC400E38782 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				227547591812DFC400E38782 /* App55-Info.plist */,
+				2275475A1812DFC400E38782 /* InfoPlist.strings */,
+				2275475D1812DFC400E38782 /* App55-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		2280BE241813145B00CE0B23 /* Messages */ = {
+			isa = PBXGroup;
+			children = (
+				2280BE251813146A00CE0B23 /* A55Message.h */,
+				2280BE261813146A00CE0B23 /* A55Message.m */,
+				2280BE291813150300CE0B23 /* A55Request.h */,
+				2280BE2A1813150300CE0B23 /* A55Request.m */,
+				2280BE2E18135C7200CE0B23 /* A55Response.h */,
+				2280BE2F18135C7200CE0B23 /* A55Response.m */,
+				2280BE3318135CC300CE0B23 /* A55CardCreateRequest.h */,
+				2280BE3418135CC300CE0B23 /* A55CardCreateRequest.m */,
+				2280BE4C1813855E00CE0B23 /* A55CardDeleteRequest.h */,
+				2280BE4D1813855E00CE0B23 /* A55CardDeleteRequest.m */,
+				2280BE531813858A00CE0B23 /* A55CardListRequest.h */,
+				2280BE541813858A00CE0B23 /* A55CardListRequest.m */,
+				2280BE5A181385A900CE0B23 /* A55UserAuthenticateRequest.h */,
+				2280BE5B181385A900CE0B23 /* A55UserAuthenticateRequest.m */,
+				2280BE61181385C200CE0B23 /* A55UserCreateRequest.h */,
+				2280BE62181385C200CE0B23 /* A55UserCreateRequest.m */,
+				2280BE68181385D300CE0B23 /* A55UserGetRequest.h */,
+				2280BE69181385D300CE0B23 /* A55UserGetRequest.m */,
+				2280BE6F181385E900CE0B23 /* A55UserUpdateRequest.h */,
+				2280BE70181385E900CE0B23 /* A55UserUpdateRequest.m */,
+				2280BE761813860100CE0B23 /* A55TransactionCreateRequest.h */,
+				2280BE771813860100CE0B23 /* A55TransactionCreateRequest.m */,
+				2280BE7D1813861E00CE0B23 /* A55TransactionCommitRequest.h */,
+				2280BE7E1813861E00CE0B23 /* A55TransactionCommitRequest.m */,
+				2280BE841813863900CE0B23 /* A55ScheduleCreateRequest.h */,
+				2280BE851813863900CE0B23 /* A55ScheduleCreateRequest.m */,
+				2280BE8B1813865600CE0B23 /* A55ScheduleDeleteRequest.h */,
+				2280BE8C1813865600CE0B23 /* A55ScheduleDeleteRequest.m */,
+				2280BE921813866B00CE0B23 /* A55ScheduleGetRequest.h */,
+				2280BE931813866B00CE0B23 /* A55ScheduleGetRequest.m */,
+				2280BE991813868000CE0B23 /* A55ScheduleListRequest.h */,
+				2280BE9A1813868000CE0B23 /* A55ScheduleListRequest.m */,
+				2280BEA01813869B00CE0B23 /* A55ScheduleUpdateRequest.h */,
+				2280BEA11813869B00CE0B23 /* A55ScheduleUpdateRequest.m */,
+			);
+			name = Messages;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -148,15 +464,74 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2280BE0C1812EBEA00CE0B23 /* App55.h in Headers */,
+				227547451812DE9100E38782 /* A55Name.h in Headers */,
+				2280BE551813858A00CE0B23 /* A55CardListRequest.h in Headers */,
+				2280BE031812E20100CE0B23 /* A55Schedule.h in Headers */,
+				2280BE4E1813855E00CE0B23 /* A55CardDeleteRequest.h in Headers */,
+				2275477B1812E04400E38782 /* A55Card.h in Headers */,
+				227547381812AFF500E38782 /* A55Environment.h in Headers */,
+				2280BE9B1813868000CE0B23 /* A55ScheduleListRequest.h in Headers */,
+				227547411812DDED00E38782 /* A55User.h in Headers */,
+				227547491812DEF000E38782 /* A55Address.h in Headers */,
+				2280BE781813860100CE0B23 /* A55TransactionCreateRequest.h in Headers */,
+				2280BEA21813869B00CE0B23 /* A55ScheduleUpdateRequest.h in Headers */,
+				2280BE5C181385A900CE0B23 /* A55UserAuthenticateRequest.h in Headers */,
+				2280BE3918137EB500CE0B23 /* A55JsonParser.h in Headers */,
+				227547341812AF1C00E38782 /* A55Gateway.h in Headers */,
+				2280BE0B1812EBB600CE0B23 /* App55-Prefix.pch in Headers */,
+				2280BE3018135C7200CE0B23 /* A55Response.h in Headers */,
+				2280BE861813863900CE0B23 /* A55ScheduleCreateRequest.h in Headers */,
+				2280BE71181385E900CE0B23 /* A55UserUpdateRequest.h in Headers */,
+				2275473D1812DAA300E38782 /* A55Object.h in Headers */,
+				2280BE63181385C200CE0B23 /* A55UserCreateRequest.h in Headers */,
+				2280BE2B1813150300CE0B23 /* A55Request.h in Headers */,
+				2280BE8D1813865700CE0B23 /* A55ScheduleDeleteRequest.h in Headers */,
+				2280BE271813146A00CE0B23 /* A55Message.h in Headers */,
+				227547821812E10100E38782 /* A55Transaction.h in Headers */,
+				2280BE3518135CC300CE0B23 /* A55CardCreateRequest.h in Headers */,
+				2280BE941813866B00CE0B23 /* A55ScheduleGetRequest.h in Headers */,
+				2280BE7F1813861E00CE0B23 /* A55TransactionCommitRequest.h in Headers */,
+				2280BE6A181385D300CE0B23 /* A55UserGetRequest.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2275474D1812DFC400E38782 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2280BE191812EC1B00CE0B23 /* A55Gateway.h in Headers */,
+				2280BE181812EC1B00CE0B23 /* App55.h in Headers */,
+				2280BE72181385E900CE0B23 /* A55UserUpdateRequest.h in Headers */,
+				2280BE951813866B00CE0B23 /* A55ScheduleGetRequest.h in Headers */,
+				2280BE121812EC1B00CE0B23 /* A55Name.h in Headers */,
+				2280BE9C1813868000CE0B23 /* A55ScheduleListRequest.h in Headers */,
+				2280BE801813861E00CE0B23 /* A55TransactionCommitRequest.h in Headers */,
+				2280BE0F1812EC0F00CE0B23 /* A55Object.h in Headers */,
+				2280BE101812EC1B00CE0B23 /* A55User.h in Headers */,
+				2280BE161812EC1B00CE0B23 /* A55Schedule.h in Headers */,
+				2280BE8E1813865700CE0B23 /* A55ScheduleDeleteRequest.h in Headers */,
+				2280BE1B1812EC1B00CE0B23 /* A55Environment.h in Headers */,
+				2280BE871813863900CE0B23 /* A55ScheduleCreateRequest.h in Headers */,
+				2280BE64181385C200CE0B23 /* A55UserCreateRequest.h in Headers */,
+				2280BE141812EC1B00CE0B23 /* A55Address.h in Headers */,
+				2280BE561813858A00CE0B23 /* A55CardListRequest.h in Headers */,
+				2280BE4F1813855E00CE0B23 /* A55CardDeleteRequest.h in Headers */,
+				2280BE6B181385D300CE0B23 /* A55UserGetRequest.h in Headers */,
+				2280BE5D181385A900CE0B23 /* A55UserAuthenticateRequest.h in Headers */,
+				2275477C1812E04400E38782 /* A55Card.h in Headers */,
+				227547831812E10100E38782 /* A55Transaction.h in Headers */,
+				2280BE791813860100CE0B23 /* A55TransactionCreateRequest.h in Headers */,
+				2280BEA31813869B00CE0B23 /* A55ScheduleUpdateRequest.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		227547031812AD4900E38782 /* App55 */ = {
+		227547031812AD4900E38782 /* app55-ios */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 2275472C1812AD4900E38782 /* Build configuration list for PBXNativeTarget "App55" */;
+			buildConfigurationList = 2275472C1812AD4900E38782 /* Build configuration list for PBXNativeTarget "app55-ios" */;
 			buildPhases = (
 				227546FE1812AD4900E38782 /* Sources */,
 				227546FF1812AD4900E38782 /* Frameworks */,
@@ -168,9 +543,9 @@
 			);
 			dependencies = (
 			);
-			name = App55;
+			name = "app55-ios";
 			productName = App55;
-			productReference = 227547041812AD4900E38782 /* App55.framework */;
+			productReference = 227547041812AD4900E38782 /* app55-ios.framework */;
 			productType = "com.apple.product-type.framework.static";
 		};
 		227547161812AD4900E38782 /* App55Tests */ = {
@@ -191,6 +566,24 @@
 			productName = App55Tests;
 			productReference = 227547171812AD4900E38782 /* App55Tests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		2275474F1812DFC400E38782 /* app55-osx */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 227547731812DFC400E38782 /* Build configuration list for PBXNativeTarget "app55-osx" */;
+			buildPhases = (
+				2275474B1812DFC400E38782 /* Sources */,
+				2275474C1812DFC400E38782 /* Frameworks */,
+				2275474D1812DFC400E38782 /* Headers */,
+				2275474E1812DFC400E38782 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "app55-osx";
+			productName = App55;
+			productReference = 227547501812DFC400E38782 /* app55-osx.framework */;
+			productType = "com.apple.product-type.framework";
 		};
 /* End PBXNativeTarget section */
 
@@ -218,7 +611,8 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				227547031812AD4900E38782 /* App55 */,
+				227547031812AD4900E38782 /* app55-ios */,
+				2275474F1812DFC400E38782 /* app55-osx */,
 				227547161812AD4900E38782 /* App55Tests */,
 			);
 		};
@@ -238,6 +632,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				227547271812AD4900E38782 /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2275474E1812DFC400E38782 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2275475C1812DFC400E38782 /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -264,7 +666,34 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2280BE3A18137EB500CE0B23 /* A55JsonParser.m in Sources */,
+				2280BE6C181385D300CE0B23 /* A55UserGetRequest.m in Sources */,
+				2280BE881813863900CE0B23 /* A55ScheduleCreateRequest.m in Sources */,
+				2280BE571813858A00CE0B23 /* A55CardListRequest.m in Sources */,
+				2275473E1812DAA300E38782 /* A55Object.m in Sources */,
+				2280BE65181385C200CE0B23 /* A55UserCreateRequest.m in Sources */,
+				2280BE5E181385A900CE0B23 /* A55UserAuthenticateRequest.m in Sources */,
+				2280BE501813855E00CE0B23 /* A55CardDeleteRequest.m in Sources */,
+				2275477D1812E04400E38782 /* A55Card.m in Sources */,
+				227547351812AF1C00E38782 /* A55Gateway.m in Sources */,
+				2280BE73181385E900CE0B23 /* A55UserUpdateRequest.m in Sources */,
+				2280BE2C1813150300CE0B23 /* A55Request.m in Sources */,
+				2280BE3118135C7200CE0B23 /* A55Response.m in Sources */,
+				2280BE9D1813868000CE0B23 /* A55ScheduleListRequest.m in Sources */,
+				2280BE961813866B00CE0B23 /* A55ScheduleGetRequest.m in Sources */,
 				227547121812AD4900E38782 /* App55.m in Sources */,
+				2280BE281813146A00CE0B23 /* A55Message.m in Sources */,
+				2280BE811813861E00CE0B23 /* A55TransactionCommitRequest.m in Sources */,
+				2280BE041812E20100CE0B23 /* A55Schedule.m in Sources */,
+				227547421812DDED00E38782 /* A55User.m in Sources */,
+				2280BE7A1813860100CE0B23 /* A55TransactionCreateRequest.m in Sources */,
+				2280BEA41813869B00CE0B23 /* A55ScheduleUpdateRequest.m in Sources */,
+				227547841812E10100E38782 /* A55Transaction.m in Sources */,
+				227547461812DE9100E38782 /* A55Name.m in Sources */,
+				2275474A1812DEF000E38782 /* A55Address.m in Sources */,
+				227547391812AFF500E38782 /* A55Environment.m in Sources */,
+				2280BE8F1813865700CE0B23 /* A55ScheduleDeleteRequest.m in Sources */,
+				2280BE3618135CC300CE0B23 /* A55CardCreateRequest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -272,7 +701,71 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2280BE831813861E00CE0B23 /* A55TransactionCommitRequest.m in Sources */,
+				2280BE2D1813421B00CE0B23 /* A55Object.m in Sources */,
+				2280BE67181385C200CE0B23 /* A55UserCreateRequest.m in Sources */,
+				2280BE3B181381E800CE0B23 /* A55CardCreateRequest.m in Sources */,
+				2280BE1F1812EC2B00CE0B23 /* A55Address.m in Sources */,
+				2280BE061812E73A00CE0B23 /* A55ObjectTests.m in Sources */,
 				227547291812AD4900E38782 /* App55Tests.m in Sources */,
+				2280BEA61813869B00CE0B23 /* A55ScheduleUpdateRequest.m in Sources */,
+				2280BE981813866B00CE0B23 /* A55ScheduleGetRequest.m in Sources */,
+				2280BE7C1813860100CE0B23 /* A55TransactionCreateRequest.m in Sources */,
+				2280BE221812EC2B00CE0B23 /* A55Gateway.m in Sources */,
+				2275477F1812E04400E38782 /* A55Card.m in Sources */,
+				2280BE41181381F400CE0B23 /* A55Message.m in Sources */,
+				2280BE6E181385D300CE0B23 /* A55UserGetRequest.m in Sources */,
+				2280BE8A1813863900CE0B23 /* A55ScheduleCreateRequest.m in Sources */,
+				2280BE1D1812EC2B00CE0B23 /* A55User.m in Sources */,
+				2280BE60181385A900CE0B23 /* A55UserAuthenticateRequest.m in Sources */,
+				2280BE431813820100CE0B23 /* A55JsonParser.m in Sources */,
+				2280BE75181385E900CE0B23 /* A55UserUpdateRequest.m in Sources */,
+				2280BE591813858A00CE0B23 /* A55CardListRequest.m in Sources */,
+				2280BE1E1812EC2B00CE0B23 /* A55Name.m in Sources */,
+				2280BE211812EC2B00CE0B23 /* App55.m in Sources */,
+				2280BE3D181381ED00CE0B23 /* A55Response.m in Sources */,
+				2280BE201812EC2B00CE0B23 /* A55Schedule.m in Sources */,
+				2280BE911813865700CE0B23 /* A55ScheduleDeleteRequest.m in Sources */,
+				2280BE3F181381F100CE0B23 /* A55Request.m in Sources */,
+				2280BE9F1813868000CE0B23 /* A55ScheduleListRequest.m in Sources */,
+				227547861812E10100E38782 /* A55Transaction.m in Sources */,
+				2280BE521813855E00CE0B23 /* A55CardDeleteRequest.m in Sources */,
+				2280BE231812EC2B00CE0B23 /* A55Environment.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2275474B1812DFC400E38782 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2280BE441813820100CE0B23 /* A55JsonParser.m in Sources */,
+				2280BE6D181385D300CE0B23 /* A55UserGetRequest.m in Sources */,
+				2280BE891813863900CE0B23 /* A55ScheduleCreateRequest.m in Sources */,
+				2280BE581813858A00CE0B23 /* A55CardListRequest.m in Sources */,
+				2280BE171812EC1B00CE0B23 /* A55Schedule.m in Sources */,
+				2280BE66181385C200CE0B23 /* A55UserCreateRequest.m in Sources */,
+				2280BE5F181385A900CE0B23 /* A55UserAuthenticateRequest.m in Sources */,
+				2280BE511813855E00CE0B23 /* A55CardDeleteRequest.m in Sources */,
+				2280BE1C1812EC1B00CE0B23 /* A55Environment.m in Sources */,
+				2280BE3E181381EE00CE0B23 /* A55Response.m in Sources */,
+				2280BE74181385E900CE0B23 /* A55UserUpdateRequest.m in Sources */,
+				2280BE1A1812EC1B00CE0B23 /* A55Gateway.m in Sources */,
+				2280BE0E1812EC0C00CE0B23 /* A55Object.m in Sources */,
+				2280BE9E1813868000CE0B23 /* A55ScheduleListRequest.m in Sources */,
+				2280BE971813866B00CE0B23 /* A55ScheduleGetRequest.m in Sources */,
+				227547601812DFC400E38782 /* App55.m in Sources */,
+				2275477E1812E04400E38782 /* A55Card.m in Sources */,
+				2280BE821813861E00CE0B23 /* A55TransactionCommitRequest.m in Sources */,
+				2280BE40181381F100CE0B23 /* A55Request.m in Sources */,
+				2280BE111812EC1B00CE0B23 /* A55User.m in Sources */,
+				2280BE7B1813860100CE0B23 /* A55TransactionCreateRequest.m in Sources */,
+				2280BEA51813869B00CE0B23 /* A55ScheduleUpdateRequest.m in Sources */,
+				2280BE131812EC1B00CE0B23 /* A55Name.m in Sources */,
+				2280BE151812EC1B00CE0B23 /* A55Address.m in Sources */,
+				2280BE3C181381E900CE0B23 /* A55CardCreateRequest.m in Sources */,
+				227547851812E10100E38782 /* A55Transaction.m in Sources */,
+				2280BE901813865700CE0B23 /* A55ScheduleDeleteRequest.m in Sources */,
+				2280BE42181381F400CE0B23 /* A55Message.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -281,12 +774,12 @@
 /* Begin PBXTargetDependency section */
 		2275471E1812AD4900E38782 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 227547031812AD4900E38782 /* App55 */;
+			target = 227547031812AD4900E38782 /* app55-ios */;
 			targetProxy = 2275471D1812AD4900E38782 /* PBXContainerItemProxy */;
 		};
 		227547201812AD4900E38782 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 227547031812AD4900E38782 /* App55 */;
+			target = 227547031812AD4900E38782 /* app55-ios */;
 			targetProxy = 2275471F1812AD4900E38782 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -304,6 +797,14 @@
 			isa = PBXVariantGroup;
 			children = (
 				227547261812AD4900E38782 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		2275475A1812DFC400E38782 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				2275475B1812DFC400E38782 /* en */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
@@ -423,7 +924,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
-				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/App55.framework/Versions/A/App55";
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/app55-ios.framework/Versions/A/app55-ios";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
@@ -446,7 +947,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
-				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/App55.framework/Versions/A/App55";
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/app55-ios.framework/Versions/A/app55-ios";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
@@ -458,6 +959,55 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = xctest;
+			};
+			name = Release;
+		};
+		227547741812DFC400E38782 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				FRAMEWORK_VERSION = A;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "App55/App55-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "App55/App55-Info.plist";
+				MACOSX_DEPLOYMENT_TARGET = 10.8;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				WRAPPER_EXTENSION = framework;
+			};
+			name = Debug;
+		};
+		227547751812DFC400E38782 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				FRAMEWORK_VERSION = A;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "App55/App55-Prefix.pch";
+				INFOPLIST_FILE = "App55/App55-Info.plist";
+				MACOSX_DEPLOYMENT_TARGET = 10.8;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				WRAPPER_EXTENSION = framework;
 			};
 			name = Release;
 		};
@@ -473,13 +1023,14 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		2275472C1812AD4900E38782 /* Build configuration list for PBXNativeTarget "App55" */ = {
+		2275472C1812AD4900E38782 /* Build configuration list for PBXNativeTarget "app55-ios" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				2275472D1812AD4900E38782 /* Debug */,
 				2275472E1812AD4900E38782 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		2275472F1812AD4900E38782 /* Build configuration list for PBXNativeTarget "App55Tests" */ = {
 			isa = XCConfigurationList;
@@ -488,6 +1039,16 @@
 				227547311812AD4900E38782 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		227547731812DFC400E38782 /* Build configuration list for PBXNativeTarget "app55-osx" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				227547741812DFC400E38782 /* Debug */,
+				227547751812DFC400E38782 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
