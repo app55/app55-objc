@@ -11,8 +11,13 @@
 @class A55Gateway;
 
 @interface A55Message : A55Object
+@property (copy) NSString *signature;
+@property (copy) NSString *timestamp;
+@property (copy) NSNumber *validity;
+
 @property (readonly) A55Gateway *gateway;
 @property (readonly) NSString *formData;
 
 - (id)initWithGateway:(A55Gateway*)gateway;
+- (id)initWithDictionary:(NSDictionary *)dictionary gateway:(A55Gateway*)gateway;
 @end

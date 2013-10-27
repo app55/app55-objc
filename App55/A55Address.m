@@ -20,4 +20,54 @@
     A55_PROPERTY(NSString, country, country)
     A55_END
 }
+
+- (id)init {
+    if(self = [super init]) {
+        
+    }
+    return self;
+}
+- (id)initWithStreet:(NSString*)street
+                city:(NSString*)city
+          postalCode:(NSString*)postalCode
+             country:(NSString*)country {
+    if(self = [self init]) {
+        self.street = street;
+        self.city = city;
+        self.postalCode = postalCode;
+        self.country = country;
+    }
+    return self;
+}
+- (id)initWithStreet:(NSString*)street
+             street2:(NSString*)street2
+                city:(NSString*)city
+          postalCode:(NSString*)postalCode
+             country:(NSString*)country {
+    if(self = [self init]) {
+        self.street = street;
+        self.street2 = street2;
+        self.city = city;
+        self.postalCode = postalCode;
+        self.country = country;
+    }
+    return self;
+}
+
++ (id)address {
+    return [[A55Address alloc] init];
+}
++ (id)addressWithStreet:(NSString*)street
+                   city:(NSString*)city
+             postalCode:(NSString*)postalCode
+                country:(NSString*)country {
+    return [[A55Address alloc] initWithStreet:street city:city postalCode:postalCode country:country];
+}
++ (id)addressWithStreet:(NSString*)street
+                street2:(NSString*)street2
+                   city:(NSString*)city
+             postalCode:(NSString*)postalCode
+                country:(NSString*)country {
+    return [[A55Address alloc] initWithStreet:street city:city postalCode:postalCode country:country];
+}
 @end

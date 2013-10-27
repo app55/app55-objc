@@ -20,7 +20,7 @@
 @end
 
 @implementation A55UserGetRequest
-@dynamic user;
+@synthesize user = _user;
 
 + (void)initialize {
     A55_INTERFACE
@@ -38,7 +38,7 @@
     return [NSString stringWithFormat:@"%@/user/%@", self.gateway.environment.baseUrl, self.user.identifier];
 }
 
-- (Class)responseClass {
++ (Class)responseClass {
     return [A55UserGetResponse class];
 }
 @end

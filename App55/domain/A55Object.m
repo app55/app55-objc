@@ -35,9 +35,13 @@ static const char *kA55InterfaceProperties = "app55.interfaceProperties";
 
 void A55BeginInterface(Class cls) {
     NSMutableDictionary *keys = [NSMutableDictionary dictionary];
+    NSDictionary *superKeys = objc_getAssociatedObject(class_getSuperclass(cls), kA55InterfaceKeys);
+    if(superKeys) [keys addEntriesFromDictionary:superKeys];
     objc_setAssociatedObject(cls, kA55InterfaceKeys, keys, OBJC_ASSOCIATION_RETAIN);
     
     NSMutableDictionary *properties = [NSMutableDictionary dictionary];
+    NSDictionary *superProperties = objc_getAssociatedObject(class_getSuperclass(cls), kA55InterfaceProperties);
+    if(superProperties) [properties addEntriesFromDictionary:superProperties];
     objc_setAssociatedObject(cls, kA55InterfaceProperties, properties, OBJC_ASSOCIATION_RETAIN);
 }
 
@@ -69,6 +73,7 @@ static void A55SetProperty(A55Object *self, SEL sel, id value) {
     NSMutableDictionary *properties = objc_getAssociatedObject([self class], kA55InterfaceProperties);
     NSMutableString *property = [NSStringFromSelector(sel) mutableCopy];
     [property deleteCharactersInRange:NSMakeRange(0, 3)];
+    [property deleteCharactersInRange:NSMakeRange(property.length - 1, 1)];
     [property replaceCharactersInRange:NSMakeRange(0, 1) withString:[[property substringToIndex:1] lowercaseString]];
     A55PropertyRegistration *registration = [properties valueForKey:property];
     [self setValue:[value copy] forKey:registration.key];
@@ -97,7 +102,11 @@ static void A55SetProperty(A55Object *self, SEL sel, id value) {
             if([value isKindOfClass:NSDictionary.class]) {
                 value = [[registration.cls alloc] initWithDictionary:value];
             } else if([value isKindOfClass:NSArray.class]) {
-                
+                NSMutableArray *array = [NSMutableArray array];
+                for(id o in value) {
+                    [array addObject:[[registration.cls alloc] initWithDictionary:o]];
+                }
+                value = [NSArray arrayWithArray:array];
             }
             
             [self setValue:value forKey:key];
@@ -118,13 +127,28 @@ static void A55SetProperty(A55Object *self, SEL sel, id value) {
     [dictionary setValue:value forKey:key];
 }
 
+- (id)copyWithZone:(NSZone *)zone {
+    A55Object *object = [[[self class] allocWithZone:zone] initWithDictionary:dictionary];
+    return object;
+}
+
 + (BOOL)resolveInstanceMethod:(SEL)sel {
+    NSMutableDictionary *properties = objc_getAssociatedObject([self class], kA55InterfaceProperties);
+    NSMutableString *property = [NSStringFromSelector(sel) mutableCopy];
     if([NSStringFromSelector(sel) hasPrefix:@"set"]) {
+        [property deleteCharactersInRange:NSMakeRange(0, 3)];
+        [property deleteCharactersInRange:NSMakeRange(property.length - 1, 1)];
+        [property replaceCharactersInRange:NSMakeRange(0, 1) withString:[[property substringToIndex:1] lowercaseString]];
+        A55PropertyRegistration *registration = [properties valueForKey:property];
+        if(registration == nil) return [super resolveInstanceMethod:sel];
         class_addMethod([self class], sel, (IMP)A55SetProperty, "v@:@");
+        return YES;
     } else {
+        A55PropertyRegistration *registration = [properties valueForKey:property];
+        if(registration == nil) return [super resolveInstanceMethod:sel];
         class_addMethod([self class], sel, (IMP)A55GetProperty, "@@:");
+        return YES;
     }
-    return YES;
 }
 
 @end

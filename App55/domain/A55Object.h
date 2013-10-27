@@ -8,12 +8,14 @@
 
 #import <Foundation/Foundation.h>
 
-@interface A55Object : NSObject {
+@interface A55Object : NSObject <NSCopying> {
     NSMutableDictionary *dictionary;
 }
 
 - (id)initWithDictionary:(NSDictionary*)dictionary;
 - (NSDictionary*)dictionary;
+
+- (id)copyWithZone:(NSZone *)zone;
 
 @end
 

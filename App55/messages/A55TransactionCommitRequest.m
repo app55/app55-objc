@@ -44,7 +44,7 @@
             self.gateway.environment.baseUrl, self.transaction.identifier];
 }
 
-- (Class)responseClass {
++ (Class)responseClass {
     return [A55TransactionCommitResponse class];
 }
 @end

@@ -19,6 +19,7 @@
 @interface A55CardCreateRequest : A55Request
 @property (copy) A55Card *card;
 @property (copy) A55User *user;
+@property (copy) NSString *ipAddress;
 
 - (id)initWithCard:(A55Card*)card user:(A55User*)user gateway:(A55Gateway*)gateway;
 @end

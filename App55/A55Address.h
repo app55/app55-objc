@@ -14,4 +14,26 @@
 @property (copy) NSString *city;
 @property (copy) NSString *postalCode;
 @property (copy) NSString *country;
+
+- (id)init;
+- (id)initWithStreet:(NSString*)street
+                city:(NSString*)city
+          postalCode:(NSString*)postalCode
+             country:(NSString*)country;
+- (id)initWithStreet:(NSString*)street
+             street2:(NSString*)street2
+                city:(NSString*)city
+          postalCode:(NSString*)postalCode
+             country:(NSString*)country;
+
++ (id)address;
++ (id)addressWithStreet:(NSString*)street
+                   city:(NSString*)city
+             postalCode:(NSString*)postalCode
+                country:(NSString*)country;
++ (id)addressWithStreet:(NSString*)street
+                street2:(NSString*)street2
+                   city:(NSString*)city
+             postalCode:(NSString*)postalCode
+                country:(NSString*)country;
 @end

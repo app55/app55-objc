@@ -47,10 +47,11 @@
     return self;
 }
 
-- (id)initWithTransaction:(A55Transaction*)transaction
-                ipAddress:(NSString*)ipAddress
-                  gateway:(A55Gateway*)gateway {
-    if(self = [self initWithCard:nil user:nil transaction:transaction ipAddress:ipAddress gateway:gateway]) {
+- (id)initWithCard:(A55Card*)card
+       transaction:(A55Transaction*)transaction
+         ipAddress:(NSString*)ipAddress
+           gateway:(A55Gateway*)gateway {
+    if(self = [self initWithCard:card user:nil transaction:transaction ipAddress:ipAddress gateway:gateway]) {
         
     }
     return self;
@@ -60,15 +61,16 @@
               user:(A55User*)user
        transaction:(A55Transaction*)transaction
            gateway:(A55Gateway*)gateway {
-    if(self = [self initWithCard:card user:user transaction:transaction gateway:gateway]) {
+    if(self = [self initWithCard:card user:user transaction:transaction ipAddress:nil gateway:gateway]) {
         
     }
     return self;
 }
 
-- (id)initWithTransaction:(A55Transaction *)transaction
-                  gateway:(A55Gateway *)gateway {
-    if(self = [self initWithCard:nil user:nil transaction:transaction gateway:gateway]) {
+- (id)initWithCard:(A55Card*)card
+       transaction:(A55Transaction *)transaction
+           gateway:(A55Gateway *)gateway {
+    if(self = [self initWithCard:card user:nil transaction:transaction ipAddress:nil gateway:gateway]) {
         
     }
     return self;
@@ -82,7 +84,7 @@
     return [NSString stringWithFormat:@"%@/transaction", self.gateway.environment.baseUrl];
 }
 
-- (Class)responseClass {
++ (Class)responseClass {
     return [A55TransactionCreateResponse class];
 }
 @end

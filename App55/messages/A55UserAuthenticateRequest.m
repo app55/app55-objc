@@ -43,7 +43,7 @@
     return [NSString stringWithFormat:@"%@/user/authenticate", self.gateway.environment.baseUrl];
 }
 
-- (Class)responseClass {
++ (Class)responseClass {
     return [A55UserAuthenticateResponse class];
 }
 @end

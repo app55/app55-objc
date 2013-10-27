@@ -17,6 +17,11 @@
 #import "A55UserUpdateRequest.h"
 #import "A55TransactionCreateRequest.h"
 #import "A55TransactionCommitRequest.h"
+#import "A55ScheduleCreateRequest.h"
+#import "A55ScheduleDeleteRequest.h"
+#import "A55ScheduleGetRequest.h"
+#import "A55ScheduleListRequest.h"
+#import "A55ScheduleUpdateRequest.h"
 
 @interface A55Gateway : NSObject {
     NSString *apiSecret;
@@ -27,14 +32,21 @@
 @property (copy)     A55Object *data;
 @property (assign)   BOOL storeAuthenticationTokens;
 
+- (void)setAuthorizationHeader:(NSMutableURLRequest*)request;
 
 - (id)initWithEnvironment:(A55Environment*)environment
                    apiKey:(NSString*)apiKey
                 apiSecret:(NSString*)apiSecret;
 
++ (id)gatewayWithEnvironment:(A55Environment*)environment
+                      apiKey:(NSString*)apiKey
+                   apiSecret:(NSString*)apiSecret;
+
 - (id)initWithEnvironment:(A55Environment *)environment
                    apiKey:(NSString *)apiKey;
 
++ (id)gatewayWithEnvironment:(A55Environment*)environment
+                      apiKey:(NSString*)apiKey;
 
 - (A55CardCreateRequest*)createCard:(A55Card*)card user:(A55User*)user;
 - (A55CardDeleteRequest*)deleteCard:(A55Card*)card user:(A55User*)user;
@@ -52,9 +64,27 @@
 - (A55TransactionCreateRequest*)createTransactionWithCard:(A55Card*)card
                                                      user:(A55User*)user
                                               transaction:(A55Transaction*)transaction;
-- (A55TransactionCreateRequest*)createTransaction:(A55Transaction*)transaction
-                                        ipAddress:(NSString*)ipAddress;
-- (A55TransactionCreateRequest*)createTransaction:(A55Transaction*)transaction;
+- (A55TransactionCreateRequest*)createTransactionWithCard:(A55Card *)card
+                                              transaction:(A55Transaction *)transaction
+                                                ipAddress:(NSString*)ipAddress;
+- (A55TransactionCreateRequest*)createTransactionWithCard:(A55Card *)card
+                                              transaction:(A55Transaction *)transaction;
 - (A55TransactionCommitRequest*)commitTransaction:(A55Transaction*)transaction;
+
+- (A55ScheduleCreateRequest*)createScheduleWithCard:(A55Card*)card
+                                               user:(A55User*)user
+                                        transaction:(A55Transaction*)transaction
+                                           schedule:(A55Schedule*)schedule;
+- (A55ScheduleDeleteRequest*)deleteScheduleWithUser:(A55User*)user
+                                           schedule:(A55Schedule*)schedule;
+- (A55ScheduleGetRequest*)getScheduleWithUser:(A55User*)user
+                                     schedule:(A55Schedule*)schedule;
+- (A55ScheduleListRequest*)listSchedules:(A55User*)user;
+- (A55ScheduleListRequest*)listSchedules:(A55User*)user active:(NSNumber*)active;
+- (A55ScheduleUpdateRequest*)updateScheduleWithCard:(A55Card*)card
+                                               user:(A55User*)user
+                                           schedule:(A55Schedule*)schedule;
+
+- (NSString*)sign:(A55Object*)object;
 
 @end

@@ -26,6 +26,7 @@
     A55_INTERFACE
     A55_PROPERTY(A55Card, card, card)
     A55_PROPERTY(A55User, user, user)
+    A55_PROPERTY(NSString, ip_address, ipAddress)
     A55_END
 }
 
@@ -45,7 +46,7 @@
     return [NSString stringWithFormat:@"%@/card", self.gateway.environment.baseUrl];
 }
 
-- (Class)responseClass {
++ (Class)responseClass {
     return [A55CardCreateResponse class];
 }
 @end

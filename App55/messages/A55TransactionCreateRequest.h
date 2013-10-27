@@ -29,16 +29,18 @@
          ipAddress:(NSString*)ipAddress
            gateway:(A55Gateway*)gateway;
 
-- (id)initWithTransaction:(A55Transaction*)transaction
-                ipAddress:(NSString*)ipAddress
-                  gateway:(A55Gateway*)gateway;
+- (id)initWithCard:(A55Card*)card
+       transaction:(A55Transaction*)transaction
+         ipAddress:(NSString*)ipAddress
+           gateway:(A55Gateway*)gateway;
 
 - (id)initWithCard:(A55Card*)card
               user:(A55User*)user
        transaction:(A55Transaction*)transaction
            gateway:(A55Gateway*)gateway;
 
-- (id)initWithTransaction:(A55Transaction*)transaction
-                  gateway:(A55Gateway*)gateway;
+- (id)initWithCard:(A55Card*)card
+       transaction:(A55Transaction*)transaction
+           gateway:(A55Gateway*)gateway;
 
 @end

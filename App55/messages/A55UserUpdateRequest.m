@@ -40,7 +40,7 @@
     return [NSString stringWithFormat:@"%@/user/%@", self.gateway.environment.baseUrl, self.user.identifier];
 }
 
-- (Class)responseClass {
++ (Class)responseClass {
     return [A55UserUpdateResponse class];
 }
 @end

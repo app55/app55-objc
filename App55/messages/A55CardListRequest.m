@@ -14,7 +14,7 @@
 
 + (void)initialize {
     A55_INTERFACE
-    A55_PROPERTY(A55Card, cards, cards)
+    A55_PROPERTY_ARRAY(A55Card, cards, cards)
     A55_END
 }
 @end
@@ -39,7 +39,7 @@
     return [NSString stringWithFormat:@"%@/card", self.gateway.environment.baseUrl];
 }
 
-- (Class)responseClass {
++ (Class)responseClass {
     return [A55CardListResponse class];
 }
 @end

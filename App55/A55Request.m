@@ -9,6 +9,8 @@
 #import <objc/runtime.h>
 #import "A55Request.h"
 #import "A55JsonParser.h"
+#import "A55Exception.h"
+#import "A55Gateway.h"
 
 static const char * kA55ResponseHandler = "app55.responseHandler";
 static const char * kA55ErrorHandler = "app55.errorHandler";
@@ -17,7 +19,7 @@ static const char * kA55ResponseBuffer = "app55.responseBuffer";
 static void _A55ConvertValue(NSMutableDictionary *dictout, NSString *key, id value);
 static NSDictionary *_A55ArrayToDottedDictionary(NSArray *array, NSString *path);
 static NSDictionary *_A55ObjectToDottedDictionary(A55Object *object, NSString *path);
-static NSDictionary *A55ObjectToDottedDictionary(A55Object *object);
+NSDictionary *A55ObjectToDottedDictionary(A55Object *object);
 
 
 static inline void _A55ConvertValue(NSMutableDictionary *dictout, NSString *key, id value) {
@@ -59,24 +61,34 @@ static inline NSDictionary *_A55ObjectToDottedDictionary(A55Object *object, NSSt
     return [NSDictionary dictionaryWithDictionary:dictout];
 }
 
-static inline NSDictionary *A55ObjectToDottedDictionary(A55Object *object) {
+NSDictionary *A55ObjectToDottedDictionary(A55Object *object) {
     return _A55ObjectToDottedDictionary(object, nil);
 }
 
-static inline NSString *A55URLEncode(NSDictionary *dictionary) {
+NSString *A55URLEncode(NSDictionary *dictionary) {
     NSMutableArray *parts = [NSMutableArray array];
-    for(NSString *key in dictionary) {
+    for(NSString *key in [[dictionary allKeys] sortedArrayUsingSelector:@selector(compare:)]) {
         NSString *value = [NSString stringWithFormat:@"%@", [dictionary valueForKey:key]];
-        NSString *part = [NSString stringWithFormat:@"%@=%@",
-                          [key stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding],
-                          [value stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
+        NSString *encKey = (__bridge id)CFURLCreateStringByAddingPercentEscapes(kCFAllocatorDefault, (__bridge CFStringRef)key, NULL, CFSTR("@/"), kCFStringEncodingUTF8);
+        NSString *encValue = (__bridge id)CFURLCreateStringByAddingPercentEscapes(kCFAllocatorDefault, (__bridge CFStringRef)value, NULL, CFSTR("@/"), kCFStringEncodingUTF8);
+        NSString *part = [NSString stringWithFormat:@"%@=%@", encKey, encValue];
         [parts addObject:part];
     }
-    return [parts componentsJoinedByString:@"&"];
+    NSString *r = [parts componentsJoinedByString:@"&"];
+    return r;
 }
 
 @implementation A55Request
-@dynamic endpoint, method;
+@dynamic endpoint, method, data, next, apiKey, callback;
+
++ (void)initialize {
+    A55_INTERFACE
+    A55_PROPERTY(NSString, data, data)
+    A55_PROPERTY(NSString, next, next)
+    A55_PROPERTY(NSString, api_key, apiKey)
+    A55_PROPERTY(NSString, callback, callback)
+    A55_END
+}
 
 - (NSString *)endpoint {
     @throw [NSException exceptionWithName:NSInternalInconsistencyException
@@ -90,7 +102,7 @@ static inline NSString *A55URLEncode(NSDictionary *dictionary) {
 
 + (Class)responseClass {
     @throw [NSException exceptionWithName:NSInternalInconsistencyException
-                                   reason:@"A55Response.responseClass not implemented"
+                                   reason:@"A55Request.responseClass not implemented"
                                  userInfo:nil];
 }
 
@@ -106,11 +118,13 @@ static inline NSString *A55URLEncode(NSDictionary *dictionary) {
         [request setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-Type"];
         [request setHTTPBody:[qs dataUsingEncoding:NSUTF8StringEncoding]];
     }
+    [self.gateway setAuthorizationHeader:request];
     [request setHTTPMethod:self.method];
-    objc_setAssociatedObject(request, kA55ResponseHandler, responseHandler, OBJC_ASSOCIATION_RETAIN);
-    objc_setAssociatedObject(request, kA55ResponseHandler, errorHandler, OBJC_ASSOCIATION_RETAIN);
-
-    [NSURLConnection connectionWithRequest:request delegate:self];
+    [request setCachePolicy:NSURLRequestReloadIgnoringLocalAndRemoteCacheData];
+    [request setTimeoutInterval:30.0];
+    objc_setAssociatedObject(request, kA55ResponseHandler, responseHandler, OBJC_ASSOCIATION_COPY);
+    objc_setAssociatedObject(request, kA55ErrorHandler, errorHandler, OBJC_ASSOCIATION_COPY);
+    [[NSURLConnection connectionWithRequest:request delegate:self] start];
 }
 
 
@@ -134,14 +148,35 @@ static inline NSString *A55URLEncode(NSDictionary *dictionary) {
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection {
     NSMutableData *responseData = objc_getAssociatedObject(connection.originalRequest, kA55ResponseBuffer);
     A55ResponseHandler responseHandler = objc_getAssociatedObject(connection.originalRequest, kA55ResponseHandler);
-    NSDictionary *responseDictionary = [A55JsonParser parse:[NSString stringWithUTF8String:[responseData bytes]]];
-    
-    A55Response *response = [[[[self class] responseClass] alloc] initWithDictionary:responseDictionary];
-    responseHandler(response);
+    A55ErrorHandler errorHandler = objc_getAssociatedObject(connection.originalRequest, kA55ErrorHandler);
+    NSString *responseText = [[NSString alloc] initWithData:responseData encoding:NSUTF8StringEncoding];
+    NSDictionary *responseDictionary = [A55JsonParser parse:responseText];
+
+    if([responseDictionary valueForKey:@"error"]) {
+        A55Exception *exception = [A55Exception exceptionWithDictionary:responseDictionary];
+        errorHandler(exception);
+    } else {
+        A55Response *response = nil;
+        @try {
+            response = [[[[self class] responseClass] alloc] initWithDictionary:responseDictionary
+                                                                                     gateway:self.gateway];
+        } @catch (NSException *e) {
+            if([e.name isEqualToString:@"A55InvalidSignatureException"]) {
+                errorHandler([[A55InvalidSignatureException alloc] init]);
+                return;
+            } else {
+                errorHandler(nil);
+                return;
+            }
+        }
+        responseHandler(response);
+    }
 }
 
 - (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error {
     A55ErrorHandler errorHandler = objc_getAssociatedObject(connection.originalRequest, kA55ErrorHandler);
+    errorHandler(nil);
 }
+
 
 @end

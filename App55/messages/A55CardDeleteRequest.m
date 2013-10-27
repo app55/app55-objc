@@ -42,7 +42,7 @@
     return [NSString stringWithFormat:@"%@/card/%@", self.gateway.environment.baseUrl, self.card.token];
 }
 
-- (Class)responseClass {
++ (Class)responseClass {
     return [A55CardDeleteResponse class];
 }
 @end

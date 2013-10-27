@@ -16,4 +16,24 @@
 @property (copy) NSString *password;
 @property (copy) NSString *confirmPassword;
 @property (copy) NSString *phone;
+
+- (id)init;
+- (id)initWithIdentifier:(NSNumber*)identifier;
+- (id)initWithEmail:(NSString*)email;
+- (id)initWithEmail:(NSString*)email password:(NSString*)password;
+- (id)initWithEmail:(NSString*)email phone:(NSString*)phone password:(NSString*)password confirmPassword:(NSString*)confirmPassword;
+- (id)initWithEmail:(NSString*)email password:(NSString*)password confirmPassword:(NSString*)confirmPassword;
+- (id)initWithIdentifier:(NSNumber*)identifier email:(NSString*)email;
+- (id)initWithIdentifier:(NSNumber*)identifier password:(NSString*)password confirmPassword:(NSString*)confirmPassword;
+- (id)initWithIdentifier:(NSNumber*)identifier email:(NSString*)email password:(NSString*)password confirmPassword:(NSString*)confirmPassword;
+
++ (id)user;
++ (id)userWithIdentifier:(NSNumber*)identifier;
++ (id)userWithEmail:(NSString*)email;
++ (id)userWithEmail:(NSString*)email password:(NSString*)password;
++ (id)userWithEmail:(NSString*)email phone:(NSString*)phone password:(NSString*)password confirmPassword:(NSString*)confirmPassword;
++ (id)userWithEmail:(NSString*)email password:(NSString*)password confirmPassword:(NSString*)confirmPassword;
++ (id)userWithIdentifier:(NSNumber*)identifier email:(NSString*)email;
++ (id)userWithIdentifier:(NSNumber*)identifier password:(NSString*)password confirmPassword:(NSString*)confirmPassword;
++ (id)userWithIdentifier:(NSNumber*)identifier email:(NSString*)email password:(NSString*)password confirmPassword:(NSString*)confirmPassword;
 @end

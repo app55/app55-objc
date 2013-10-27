@@ -4,15 +4,20 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
-		<key>app55-ios.xcscheme</key>
+		<key>app55-integration.xcscheme_^#shared#^_</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>2</integer>
+		</dict>
+		<key>app55-ios.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
 			<integer>0</integer>
 		</dict>
-		<key>app55-osx.xcscheme</key>
+		<key>app55-osx.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>2</integer>
+			<integer>1</integer>
 		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
@@ -33,6 +38,31 @@
 			<true/>
 		</dict>
 		<key>227547641812DFC400E38782</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>2280BEB018139BCB00CE0B23</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>2280BECC1814267C00CE0B23</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>2280BEE61814267C00CE0B23</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>2280BF191814334500CE0B23</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>2280BF291814334500CE0B23</key>
 		<dict>
 			<key>primary</key>
 			<true/>
