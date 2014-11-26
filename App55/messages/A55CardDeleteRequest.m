@@ -17,12 +17,12 @@
 @end
 
 @implementation A55CardDeleteRequest
-@synthesize card = _card;
-@dynamic user;
+@dynamic user, card;
 
 + (void)initialize {
     A55_INTERFACE
     A55_PROPERTY(A55User, user, user)
+    A55_PROPERTY(A55Card, card, card)
     A55_END
 }
 

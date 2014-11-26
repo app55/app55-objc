@@ -18,12 +18,12 @@
 @end
 
 @implementation A55ScheduleDeleteRequest
-@dynamic user;
-@synthesize schedule = _schedule;
+@dynamic user, schedule;
 
 + (void)initialize {
     A55_INTERFACE
     A55_PROPERTY(A55User, user, user)
+    A55_PROPERTY(A55Schedule, schedule, schedule)
     A55_END
 }
 

@@ -20,10 +20,11 @@
 @end
 
 @implementation A55TransactionCommitRequest
-@synthesize transaction = _transaction;
+@dynamic transaction;
 
 + (void)initialize {
     A55_INTERFACE
+    A55_PROPERTY(A55Transaction, transaction, transaction)
     A55_END
 }
 

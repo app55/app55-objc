@@ -9,5 +9,5 @@
 #import "A55Message.h"
 
 @interface A55Response : A55Message
-
+- (BOOL)isValidSignatureForGateway:(A55Gateway*)gateway;
 @end

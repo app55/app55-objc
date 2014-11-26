@@ -20,10 +20,11 @@
 @end
 
 @implementation A55UserGetRequest
-@synthesize user = _user;
+@dynamic user;
 
 + (void)initialize {
     A55_INTERFACE
+    A55_PROPERTY(A55User, user, user)
     A55_END
 }
 

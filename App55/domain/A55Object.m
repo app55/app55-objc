@@ -133,18 +133,18 @@ static void A55SetProperty(A55Object *self, SEL sel, id value) {
 }
 
 + (BOOL)resolveInstanceMethod:(SEL)sel {
-    NSMutableDictionary *properties = objc_getAssociatedObject([self class], kA55InterfaceProperties);
+    __weak NSMutableDictionary *properties = objc_getAssociatedObject([self class], kA55InterfaceProperties);
     NSMutableString *property = [NSStringFromSelector(sel) mutableCopy];
     if([NSStringFromSelector(sel) hasPrefix:@"set"]) {
         [property deleteCharactersInRange:NSMakeRange(0, 3)];
         [property deleteCharactersInRange:NSMakeRange(property.length - 1, 1)];
         [property replaceCharactersInRange:NSMakeRange(0, 1) withString:[[property substringToIndex:1] lowercaseString]];
-        A55PropertyRegistration *registration = [properties valueForKey:property];
+        __weak A55PropertyRegistration *registration = [properties valueForKey:property];
         if(registration == nil) return [super resolveInstanceMethod:sel];
         class_addMethod([self class], sel, (IMP)A55SetProperty, "v@:@");
         return YES;
     } else {
-        A55PropertyRegistration *registration = [properties valueForKey:property];
+        __weak A55PropertyRegistration *registration = [properties valueForKey:property];
         if(registration == nil) return [super resolveInstanceMethod:sel];
         class_addMethod([self class], sel, (IMP)A55GetProperty, "@@:");
         return YES;

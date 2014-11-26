@@ -14,6 +14,7 @@
 
 @interface A55CardCreateResponse : A55Response
 @property (copy) A55Card *card;
+@property (copy) A55User *user;
 @end
 
 @interface A55CardCreateRequest : A55Request

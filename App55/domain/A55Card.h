@@ -21,6 +21,7 @@
 @property (copy) NSString *type;
 @property (copy) NSString *description;
 @property (copy) NSString *issue;
+@property (copy) NSNumber *valid;
 
 - (id)init;
 - (id)initWithToken:(NSString*)token;

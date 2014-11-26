@@ -22,7 +22,8 @@ static NSDictionary *_A55ObjectToDottedDictionary(A55Object *object, NSString *p
 NSDictionary *A55ObjectToDottedDictionary(A55Object *object);
 
 
-static inline void _A55ConvertValue(NSMutableDictionary *dictout, NSString *key, id value) {
+
+static inline void _A55ConvertValue(__weak NSMutableDictionary *dictout, __weak NSString *key, __weak id value) {
     if([value isKindOfClass:[A55Object class]])
         [dictout addEntriesFromDictionary:_A55ObjectToDottedDictionary(value, key)];
     else if([value isKindOfClass:[NSArray class]])
@@ -38,27 +39,27 @@ static inline void _A55ConvertValue(NSMutableDictionary *dictout, NSString *key,
     }
 }
 
-static inline NSDictionary *_A55ArrayToDottedDictionary(NSArray *array, NSString *path) {
+static inline NSDictionary *_A55ArrayToDottedDictionary(__weak NSArray *array, __weak NSString *path) {
     NSMutableDictionary *dictout = [NSMutableDictionary dictionary];
     for(int i = 0; i < array.count; i++) {
         id value = [array objectAtIndex:i];
         NSString *key = [NSString stringWithFormat:@"%@.%d", path, i];
         _A55ConvertValue(dictout, key, value);
     }
-    return [NSDictionary dictionaryWithDictionary:dictout];
+    return dictout;
 }
 
-static inline NSDictionary *_A55ObjectToDottedDictionary(A55Object *object, NSString *path) {
+static inline NSDictionary *_A55ObjectToDottedDictionary(__weak A55Object *object, __weak NSString *path) {
     NSMutableDictionary *dictout = [NSMutableDictionary dictionary];
-    NSDictionary *dictionary = [object dictionary];
+    __weak NSDictionary *dictionary = [object dictionary];
     
     for(NSString *k in dictionary) {
-        id value = [dictionary valueForKey:k];
-        NSString *key = path ? [NSString stringWithFormat:@"%@.%@", path, k] : k;
+        __weak id value = [dictionary valueForKey:k];
+        __weak NSString *key = path ? [NSString stringWithFormat:@"%@.%@", path, k] : k;
         _A55ConvertValue(dictout, key, value);
     }
     
-    return [NSDictionary dictionaryWithDictionary:dictout];
+    return dictout;
 }
 
 NSDictionary *A55ObjectToDottedDictionary(A55Object *object) {
@@ -122,8 +123,8 @@ NSString *A55URLEncode(NSDictionary *dictionary) {
     [request setHTTPMethod:self.method];
     [request setCachePolicy:NSURLRequestReloadIgnoringLocalAndRemoteCacheData];
     [request setTimeoutInterval:30.0];
-    objc_setAssociatedObject(request, kA55ResponseHandler, responseHandler, OBJC_ASSOCIATION_COPY);
-    objc_setAssociatedObject(request, kA55ErrorHandler, errorHandler, OBJC_ASSOCIATION_COPY);
+    objc_setAssociatedObject(request, kA55ResponseHandler, responseHandler, OBJC_ASSOCIATION_RETAIN);
+    objc_setAssociatedObject(request, kA55ErrorHandler, errorHandler, OBJC_ASSOCIATION_RETAIN);
     [[NSURLConnection connectionWithRequest:request delegate:self] start];
 }
 
@@ -149,6 +150,9 @@ NSString *A55URLEncode(NSDictionary *dictionary) {
     NSMutableData *responseData = objc_getAssociatedObject(connection.originalRequest, kA55ResponseBuffer);
     A55ResponseHandler responseHandler = objc_getAssociatedObject(connection.originalRequest, kA55ResponseHandler);
     A55ErrorHandler errorHandler = objc_getAssociatedObject(connection.originalRequest, kA55ErrorHandler);
+    
+    objc_removeAssociatedObjects(connection.originalRequest);
+    
     NSString *responseText = [[NSString alloc] initWithData:responseData encoding:NSUTF8StringEncoding];
     NSDictionary *responseDictionary = [A55JsonParser parse:responseText];
 
@@ -158,16 +162,11 @@ NSString *A55URLEncode(NSDictionary *dictionary) {
     } else {
         A55Response *response = nil;
         @try {
-            response = [[[[self class] responseClass] alloc] initWithDictionary:responseDictionary
-                                                                                     gateway:self.gateway];
+            response = [[[[self class] responseClass] alloc] initWithDictionary:responseDictionary gateway:self.gateway];
+            
+            if(![response isValidSignatureForGateway:self.gateway]) errorHandler([[A55InvalidSignatureException alloc] init]);
         } @catch (NSException *e) {
-            if([e.name isEqualToString:@"A55InvalidSignatureException"]) {
-                errorHandler([[A55InvalidSignatureException alloc] init]);
-                return;
-            } else {
-                errorHandler(nil);
-                return;
-            }
+            errorHandler(nil);
         }
         responseHandler(response);
     }

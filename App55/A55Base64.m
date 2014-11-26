@@ -52,7 +52,7 @@ static char base64EncodingTable[64] = {
             inp = 0;
             outbuf[outp++] = base64EncodingTable[(raw[inp] & 0xFC) >> 2];
             outbuf[outp++] = base64EncodingTable[((raw[inp] & 0x03) << 4) | ((raw[inp+1] & 0xF0) >> 4)];
-            if ( left == 2 ) outbuf[outp++] = base64EncodingTable[((raw[inp+1] & 0x0F) << 2) | ((raw[inp+2] & 0xC0) >> 6)];
+            if ( left == 2 ) outbuf[outp++] = base64EncodingTable[((raw[inp+1] & 0x0F) << 2)];
             else outbuf[outp++] = '=';
             outbuf[outp++] = '=';
         }

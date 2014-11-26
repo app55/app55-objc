@@ -84,37 +84,38 @@ int main(int argc, const char * argv[]) {
                               confirmPassword:(NSString*)_confirmPassword
                                     firstName:(NSString*)_firstName
                                      lastName:(NSString*)_lastName {
-    NSDate *now = [NSDate date];
-    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-    [formatter setDateFormat:@"yyyyMMddHHmmss"];
-    
-    NSString *email = _email ? _email : [NSString stringWithFormat:@"example-%@@app55.com", [formatter stringFromDate:now]];
-    NSString *phone = _phone ? _phone : @"0123 456 7890";
-    NSString *password = _password ? _password : @"pa55word";
-    NSString *confirmPassword = _confirmPassword ? _confirmPassword : password;
-    NSString *firstName = _firstName ? _firstName : @"APP";
-    NSString *lastName = _lastName ? _lastName : @"USER";
-    
-    A55User *user = [A55User userWithEmail:email phone:phone password:password confirmPassword:confirmPassword];
-    user.name = [A55Name nameWithFirstName:firstName lastName:lastName];
-    
-    printf("Creating user %s... ", [email UTF8String]);
-    
-    __block A55UserCreateResponse* response = nil;
-    ASYNC_BEGIN(createUser);
-    [[gateway createUser:user] send:^(A55Response *r) {
-        response = (A55UserCreateResponse*)r;
-        ASYNC_NOTIFY(createUser);
-    } error:^(A55Exception *error) {
-        @throw [NSException exceptionWithName:NSGenericException
-                                       reason:[error description]
-                                     userInfo:nil];
-    }];
-    ASYNC_WAIT(createUser);
-    
-    printf("DONE (user-id %d)\n", [response.user.identifier intValue]);
-    
-    return response;
+
+        NSDate *now = [NSDate date];
+        NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+        [formatter setDateFormat:@"yyyyMMddHHmmss"];
+        
+        NSString *email = _email ? _email : [NSString stringWithFormat:@"example-%@@app55.com", [formatter stringFromDate:now]];
+        NSString *phone = _phone ? _phone : @"0123 456 7890";
+        NSString *password = _password ? _password : @"pa55word";
+        NSString *confirmPassword = _confirmPassword ? _confirmPassword : password;
+        NSString *firstName = _firstName ? _firstName : @"APP";
+        NSString *lastName = _lastName ? _lastName : @"USER";
+        
+        A55User *user = [A55User userWithEmail:email phone:phone password:password confirmPassword:confirmPassword];
+        user.name = [A55Name nameWithFirstName:firstName lastName:lastName];
+        
+        printf("Creating user %s... ", [email UTF8String]);
+        
+        __block A55UserCreateResponse* response = nil;
+        ASYNC_BEGIN(createUser);
+        [[gateway createUser:user] send:^(A55Response *r) {
+            response = (A55UserCreateResponse*)r;
+            ASYNC_NOTIFY(createUser);
+        } error:^(A55Exception *error) {
+            @throw [NSException exceptionWithName:NSGenericException
+                                           reason:[error description]
+                                         userInfo:nil];
+        }];
+        ASYNC_WAIT(createUser);
+        
+        printf("DONE (user-id %d)\n", [response.user.identifier intValue]);
+        
+        return response;
 }
 
 - (A55UserCreateResponse*)createUser {
@@ -122,55 +123,55 @@ int main(int argc, const char * argv[]) {
 }
 
 - (A55UserGetResponse*)getUserWithIdentifier:(NSNumber*)identifier {
-    A55User *user = [A55User userWithIdentifier:identifier];
-    
-    printf("Getting user %d... ", [user.identifier intValue]);
-    
-    __block A55UserGetResponse* response;
-    ASYNC_BEGIN(getUser);
-    [[gateway getUser:user] send:^(id r) {
-        response = r;
-        ASYNC_NOTIFY(getUser);
-    } error:^(id error) {
-        @throw [NSException exceptionWithName:NSInternalInconsistencyException
-                                       reason:[error description]
-                                     userInfo:nil];
-    }];
-    ASYNC_WAIT(getUser);
-    
-    printf("DONE\n");
-    
-    return response;
+        A55User *user = [A55User userWithIdentifier:identifier];
+        
+        printf("Getting user %d... ", [user.identifier intValue]);
+        
+        __block A55UserGetResponse* response;
+        ASYNC_BEGIN(getUser);
+        [[gateway getUser:user] send:^(id r) {
+            response = r;
+            ASYNC_NOTIFY(getUser);
+        } error:^(id error) {
+            @throw [NSException exceptionWithName:NSInternalInconsistencyException
+                                           reason:[error description]
+                                         userInfo:nil];
+        }];
+        ASYNC_WAIT(getUser);
+        
+        printf("DONE\n");
+        
+        return response;
 }
 
 - (A55CardCreateResponse*)createCardWithUser:(A55User*)_user ipAddress:(NSString*)ipAddress {
-    A55Card *card = [A55Card cardWithHolderName:@"APP55 USER"
-                                         number:@"4111111111111111"
-                                         expiry:@"04/2019"
-                                   securityCode:@"240"
-                                        address:[A55Address addressWithStreet:@"8 Exchange Quay"
-                                                                         city:@"Manchester"
-                                                                   postalCode:@"M5 3EJ"
-                                                                      country:@"GB"]];
-    A55User *user = [A55User userWithIdentifier:_user.identifier];
-    
-    printf("Creating card... ");
-    
-    __block A55CardCreateResponse* response;
-    ASYNC_BEGIN(createCard);
-    [[gateway createCard:card user:user] send:^(id r) {
-        response = r;
-        ASYNC_NOTIFY(createCard);
-    } error:^(id error) {
-        @throw [NSException exceptionWithName:NSInternalInconsistencyException
-                                       reason:[error description]
-                                     userInfo:nil];
-    }];
-    ASYNC_WAIT(createCard);
-    
-    printf("DONE (card-token %s)\n", [response.card.token UTF8String]);
-    
-    return response;
+        A55Card *card = [A55Card cardWithHolderName:@"APP55 USER"
+                                             number:@"4111111111111111"
+                                             expiry:@"04/2019"
+                                       securityCode:@"240"
+                                            address:[A55Address addressWithStreet:@"8 Exchange Quay"
+                                                                             city:@"Manchester"
+                                                                       postalCode:@"M5 3EJ"
+                                                                          country:@"GB"]];
+        A55User *user = [A55User userWithIdentifier:_user.identifier];
+        
+        printf("Creating card... ");
+        
+        __block A55CardCreateResponse* response;
+        ASYNC_BEGIN(createCard);
+        [[gateway createCard:card user:user] send:^(id r) {
+            response = r;
+            ASYNC_NOTIFY(createCard);
+        } error:^(id error) {
+            @throw [NSException exceptionWithName:NSInternalInconsistencyException
+                                           reason:[error description]
+                                         userInfo:nil];
+        }];
+        ASYNC_WAIT(createCard);
+        
+        printf("DONE (card-token %s)\n", [response.card.token UTF8String]);
+        
+        return response;
 }
 
 - (A55CardCreateResponse*)createCardWithUser:(A55User*)user {
@@ -182,42 +183,65 @@ int main(int argc, const char * argv[]) {
                                                 identifier:(NSString*)identifier
                                                     source:(NSString*)source
                                                       type:(NSString*)type
+                                                 ipAddress:(NSString*)ipAddress
+                                              errorHandler:(A55ErrorHandler)errorHandler {
+        A55Card *card = [A55Card cardWithToken:_card.token];
+        A55User *user = [A55User userWithIdentifier:_user.identifier];
+        A55Transaction *transaction = [A55Transaction transactionWithIdentifier:identifier
+                                                                         amount:@"0.10"
+                                                                       currency:@"EUR"
+                                                                    description:nil
+                                                                           type:type];
+        transaction.source = source;
+        
+        printf("Creating transaction... ");
+        
+        __block A55TransactionCreateResponse* response;
+        ASYNC_BEGIN(createTransaction);
+        [[gateway createTransactionWithCard:card
+                                       user:user
+                                transaction:transaction
+                                  ipAddress:ipAddress] send:^(id r) {
+            response = r;
+            printf("DONE (transaction-id %s)\n", [response.transaction.identifier UTF8String]);
+            ASYNC_NOTIFY(createTransaction);
+        } error:^(id error) {
+            if(errorHandler) {
+                errorHandler(error);
+                ASYNC_NOTIFY(createTransaction);
+            }
+            else @throw [NSException exceptionWithName:NSInternalInconsistencyException
+                                                reason:[error description]
+                                              userInfo:@{ @"error": error }];
+        }];
+        ASYNC_WAIT(createTransaction);
+        
+    
+        
+        return response;
+}
+
+
+- (A55TransactionCreateResponse*)createTransactionWithUser:(A55User*)_user
+                                                      card:(A55Card*)_card
+                                                identifier:(NSString*)identifier
+                                                    source:(NSString*)source
+                                                      type:(NSString*)type
                                                  ipAddress:(NSString*)ipAddress {
-    A55Card *card = [A55Card cardWithToken:_card.token];
-    A55User *user = [A55User userWithIdentifier:_user.identifier];
-    A55Transaction *transaction = [A55Transaction transactionWithIdentifier:identifier
-                                                                     amount:@"0.10"
-                                                                   currency:@"EUR"
-                                                                description:nil
-                                                                       type:type];
-    transaction.source = source;
-    
-    printf("Creating transaction... ");
-    
-    __block A55TransactionCreateResponse* response;
-    ASYNC_BEGIN(createTransaction);
-    [[gateway createTransactionWithCard:card
-                                   user:user
-                            transaction:transaction
-                              ipAddress:ipAddress] send:^(id r) {
-        response = r;
-        ASYNC_NOTIFY(createTransaction);
-    } error:^(id error) {
-        @throw [NSException exceptionWithName:NSInternalInconsistencyException
-                                       reason:[error description]
-                                     userInfo:@{ @"error": error }];
-    }];
-    ASYNC_WAIT(createTransaction);
-    
-    printf("DONE (transaction-id %s)\n", [response.transaction.identifier UTF8String]);
-    
-    return response;
+    return [self createTransactionWithUser:_user card:_card identifier:identifier source:source type:type ipAddress:ipAddress errorHandler:nil];
+}
+
+- (A55TransactionCreateResponse*)createTransactionWithUser:(A55User*)user
+                                                      card:(A55Card*)card
+                                                 ipAddress:(NSString*)ipAddress
+                                              errorHandler:(A55ErrorHandler)errorHandler {
+    return [self createTransactionWithUser:user card:card identifier:nil source:nil type:nil ipAddress:ipAddress errorHandler:errorHandler];
 }
 
 - (A55TransactionCreateResponse*)createTransactionWithUser:(A55User*)user
                                                       card:(A55Card*)card
                                                  ipAddress:(NSString*)ipAddress {
-    return [self createTransactionWithUser:user card:card identifier:nil source:nil type:nil ipAddress:ipAddress];
+    return [self createTransactionWithUser:user card:card identifier:nil source:nil type:nil ipAddress:ipAddress errorHandler:nil];
 }
 
 - (A55TransactionCreateResponse*)createAnonymousTransactionWithCard:(A55Card*)_card
@@ -225,344 +249,302 @@ int main(int argc, const char * argv[]) {
                                                              source:(NSString*)source
                                                                type:(NSString*)type
                                                           ipAddress:(NSString*)ipAddress
-                                                              email:(NSString*)email {
-    A55Card *card = _card ? _card : [A55Card cardWithHolderName:@"APP55 USER"
-                                                       number:@"4111111111111111"
-                                                       expiry:@"04/2019"
-                                                 securityCode:@"240"
-                                                      address:[A55Address addressWithStreet:@"8 Exchange Quay"
-                                                                                       city:@"Manchester"
-                                                                                 postalCode:@"M5 3EJ"
-                                                                                    country:@"GB"]];
-    A55User *user = [A55User userWithEmail:email];
-    A55Transaction *transaction = [A55Transaction transactionWithIdentifier:identifier
-                                                                     amount:@"0.10"
-                                                                   currency:@"EUR"
-                                                                description:nil
-                                                                       type:type];
-    transaction.source = source;
+                                                              email:(NSString*)email
+                                                       errorHandler:(A55ErrorHandler)errorHandler {
+        A55Card *card = _card ? _card : [A55Card cardWithHolderName:@"APP55 USER"
+                                                           number:@"4111111111111111"
+                                                           expiry:@"04/2019"
+                                                     securityCode:@"240"
+                                                          address:[A55Address addressWithStreet:@"8 Exchange Quay"
+                                                                                           city:@"Manchester"
+                                                                                     postalCode:@"M5 3EJ"
+                                                                                        country:@"GB"]];
+        A55User *user = [A55User userWithEmail:email];
+        A55Transaction *transaction = [A55Transaction transactionWithIdentifier:identifier
+                                                                         amount:@"0.10"
+                                                                       currency:@"EUR"
+                                                                    description:nil
+                                                                           type:type];
+        transaction.source = source;
+        
+        printf("Creating anonymous transaction... ");
+        
+        __block A55TransactionCreateResponse* response;
+        ASYNC_BEGIN(createTransaction);
+        [[gateway createTransactionWithCard:card
+                                       user:user
+                                transaction:transaction
+                                  ipAddress:ipAddress] send:^(id r) {
+            response = r;
+            printf("DONE (transaction-id %s)\n", [response.transaction.identifier UTF8String]);
+
+            ASYNC_NOTIFY(createTransaction);
+        } error:^(id error) {
+            if(errorHandler) {
+                errorHandler(error);
+                ASYNC_NOTIFY(createTransaction);
+            } else @throw [NSException exceptionWithName:NSInternalInconsistencyException
+                                                reason:[error description]
+                                              userInfo:@{ @"error": error }];
+        }];
+        ASYNC_WAIT(createTransaction);
     
-    printf("Creating anonymous transaction... ");
-    
-    __block A55TransactionCreateResponse* response;
-    ASYNC_BEGIN(createTransaction);
-    [[gateway createTransactionWithCard:card
-                                   user:user
-                            transaction:transaction
-                              ipAddress:ipAddress] send:^(id r) {
-        response = r;
-        ASYNC_NOTIFY(createTransaction);
-    } error:^(id error) {
-        @throw [NSException exceptionWithName:NSInternalInconsistencyException
-                                       reason:[error description]
-                                     userInfo:@{ @"error": error }];
-    }];
-    ASYNC_WAIT(createTransaction);
-    
-    printf("DONE (transaction-id %s)\n", [response.transaction.identifier UTF8String]);
-    
-    return response;
+        return response;
 }
 
 - (A55TransactionCommitResponse*)commitTransaction:(A55Transaction*)_transaction {
-    A55Transaction *transaction = [A55Transaction transactionWithIdentifier:_transaction.identifier];
-    
-    printf("Committing transaction...");
-    
-    __block A55TransactionCommitResponse* response;
-    ASYNC_BEGIN(commitTransaction);
-    [[gateway commitTransaction:transaction] send:^(id r) {
-        response = r;
-        ASYNC_NOTIFY(commitTransaction);
-    } error:^(id error) {
-        @throw [NSException exceptionWithName:NSInternalInconsistencyException
-                                       reason:[error description]
-                                     userInfo:nil];
-    }];
-    ASYNC_WAIT(commitTransaction);
-    
-    printf("DONE\n");
-    
-    return response;
+        A55Transaction *transaction = [A55Transaction transactionWithIdentifier:_transaction.identifier];
+        
+        printf("Committing transaction...");
+        
+        __block A55TransactionCommitResponse* response;
+        ASYNC_BEGIN(commitTransaction);
+        [[gateway commitTransaction:transaction] send:^(id r) {
+            response = r;
+            ASYNC_NOTIFY(commitTransaction);
+        } error:^(id error) {
+            @throw [NSException exceptionWithName:NSInternalInconsistencyException
+                                           reason:[error description]
+                                         userInfo:nil];
+        }];
+        ASYNC_WAIT(commitTransaction);
+        
+        printf("DONE\n");
+        
+        return response;
 }
 
 - (A55Transaction*)multipleTransactionsWithUser:(A55User*)user card:(A55Card*)card typeArray:(NSArray*)types {
     printf("Testing transactions of types %s\n", [[types componentsJoinedByString:@", "] UTF8String]);
     A55Transaction *transaction = [A55Transaction transactionWithIdentifier:nil];
     for(NSString *type in types) {
-        transaction = [self createTransactionWithUser:user card:card identifier:transaction.identifier source:nil type:type ipAddress:@"127.0.0.1"].transaction;
+        __block id error = nil;
+        transaction = [self createTransactionWithUser:user card:card identifier:transaction.identifier source:nil type:type ipAddress:@"127.0.0.1" errorHandler:^(A55Exception *e) {
+            error = e;
+        }].transaction;
+        if(error) return nil;
         [self commitTransaction:transaction];
     }
     return transaction;
 
 }
 
-- (A55Transaction*)multipleTransactionsWithUser:(A55User*)user card:(A55Card*)card types:(NSString*)type, ... NS_REQUIRES_NIL_TERMINATION {
-    NSMutableArray *types = [NSMutableArray array];
-    
-    va_list args;
-    va_start(args, type);
-    for(NSString *arg = type; arg != nil; arg = va_arg(args, NSString*)) {
-        [types addObject:arg];
-    }
-    va_end(args);
-    
-    return [self multipleTransactionsWithUser:user card:card typeArray:types];
-}
 
-
-
-- (A55Transaction*)duplicateTransactionsWithUser:(A55User*)user card:(A55Card*)card types:(NSString*)type, ... NS_REQUIRES_NIL_TERMINATION {
-    NSMutableArray *types = [NSMutableArray array];
-    
-    va_list args;
-    va_start(args, type);
-    for(NSString *arg = type; arg != nil; arg = va_arg(args, NSString*)) {
-        [types addObject:arg];
-    }
-    va_end(args);
-    
-    @try {
-        [self multipleTransactionsWithUser:user card:card typeArray:types];
-        @throw [NSException exceptionWithName:NSGenericException reason:@"No duplicate transaction" userInfo:nil];
-    } @catch(NSException *exception) {
-        A55Exception *error = exception.userInfo[@"error"];
-        if(![error isKindOfClass:[A55RequestException class]])
-            @throw [NSException exceptionWithName:NSGenericException reason:@"Other type of exception was thrown" userInfo:nil];
-        assert([error.message isEqualToString:@"Duplicate transaction."]);
+- (A55Transaction*)duplicateTransactionsWithUser:(A55User*)user card:(A55Card*)card typeArray:(NSArray*)types {
+    if(![self multipleTransactionsWithUser:user card:card typeArray:types]) {
         printf("EXPECTED ERROR\n");
+        return nil;
     }
+    
+    @throw [NSException exceptionWithName:NSGenericException reason:@"No duplicate transaction" userInfo:nil];
 }
 
 - (A55Transaction*)multipleAnonymousTransactionsWithTypeArray:(NSArray*)types {
     printf("Testing transactions of types %s\n", [[types componentsJoinedByString:@", "] UTF8String]);
     A55Transaction *transaction = [A55Transaction transactionWithIdentifier:nil];
     for(NSString *type in types) {
+        __block id error = nil;
         transaction = [self createAnonymousTransactionWithCard:nil
                                                     identifier:transaction.identifier
                                                         source:nil
                                                           type:type
                                                      ipAddress:@"127.0.0.1"
-                                                         email:@"example@app55.com"].transaction;
+                                                         email:@"example@app55.com"
+                                                  errorHandler:^(A55Exception *e) {
+                                                      error = e;
+                                                  }].transaction;
+        if(error) return nil;
         [self commitTransaction:transaction];
     }
     return transaction;
     
 }
 
-- (A55Transaction*)multipleAnonymousTransactionsWithTypes:(NSString*)type, ... NS_REQUIRES_NIL_TERMINATION {
-    NSMutableArray *types = [NSMutableArray array];
-    
-    va_list args;
-    va_start(args, type);
-    for(NSString *arg = type; arg != nil; arg = va_arg(args, NSString*)) {
-        [types addObject:arg];
-    }
-    va_end(args);
-    
-    return [self multipleAnonymousTransactionsWithTypeArray:types];
-}
-
-
-
-- (A55Transaction*)duplicateAnonymousTransactionsWithTypes:(NSString*)type, ... NS_REQUIRES_NIL_TERMINATION {
-    NSMutableArray *types = [NSMutableArray array];
-    
-    va_list args;
-    va_start(args, type);
-    for(NSString *arg = type; arg != nil; arg = va_arg(args, NSString*)) {
-        [types addObject:arg];
-    }
-    va_end(args);
-    
-    @try {
-        [self multipleAnonymousTransactionsWithTypeArray:types];
-        @throw [NSException exceptionWithName:NSGenericException reason:@"No duplicate transaction" userInfo:nil];
-    } @catch(NSException *exception) {
-        A55Exception *error = exception.userInfo[@"error"];
-        if(![error isKindOfClass:[A55RequestException class]])
-            @throw [NSException exceptionWithName:NSGenericException reason:@"Other type of exception was thrown" userInfo:nil];
-        assert([error.message isEqualToString:@"Duplicate transaction."]);
+- (A55Transaction*)duplicateAnonymousTransactionsWithTypeArray:(NSArray*)types {
+    if(![self multipleAnonymousTransactionsWithTypeArray:types]) {
         printf("EXPECTED ERROR\n");
+        return nil;
     }
+
+    @throw [NSException exceptionWithName:NSGenericException reason:@"No duplicate transaction" userInfo:nil];
 }
 
 - (A55CardListResponse*)listCardsWithUser:(A55User*)_user {
-    A55User *user = [A55User userWithIdentifier:_user.identifier];
-    
-    printf("Listing cards... ");
-    __block A55CardListResponse* response;
-    ASYNC_BEGIN(listCards);
-    [[gateway listCards:user] send:^(id r) {
-        response = r;
-        ASYNC_NOTIFY(listCards);
-    } error:^(id error) {
-        @throw [NSException exceptionWithName:NSInternalInconsistencyException
-                                       reason:[error description]
-                                     userInfo:nil];
-    }];
-    ASYNC_WAIT(listCards);
-    
-    printf("DONE (%lu cards)\n", (unsigned long)response.cards.count);
-    
-    return response;
+        A55User *user = [A55User userWithIdentifier:_user.identifier];
+        
+        printf("Listing cards... ");
+        __block A55CardListResponse* response;
+        ASYNC_BEGIN(listCards);
+        [[gateway listCards:user] send:^(id r) {
+            response = r;
+            ASYNC_NOTIFY(listCards);
+        } error:^(id error) {
+            @throw [NSException exceptionWithName:NSInternalInconsistencyException
+                                           reason:[error description]
+                                         userInfo:nil];
+        }];
+        ASYNC_WAIT(listCards);
+        
+        printf("DONE (%lu cards)\n", (unsigned long)response.cards.count);
+        
+        return response;
 }
 
 - (A55CardDeleteResponse*)deleteCardsWithUser:(A55User*)_user card:(A55Card*)_card {
-    A55User *user = [A55User userWithIdentifier:_user.identifier];
-    A55Card *card = [A55Card cardWithToken:_card.token];
-    
-    printf("Deleting card %s... ", [card.token UTF8String]);
-    __block A55CardDeleteResponse* response;
-    ASYNC_BEGIN(deleteCards);
-    [[gateway deleteCard:card user:user] send:^(id r) {
-        response = r;
-        ASYNC_NOTIFY(deleteCards);
-    } error:^(id error) {
-        @throw [NSException exceptionWithName:NSInternalInconsistencyException
-                                       reason:[error description]
-                                     userInfo:nil];
-    }];
-    ASYNC_WAIT(deleteCards);
-    
-    printf("DONE\n");
-    
-    return response;
+        A55User *user = [A55User userWithIdentifier:_user.identifier];
+        A55Card *card = [A55Card cardWithToken:_card.token];
+        
+        printf("Deleting card %s... ", [card.token UTF8String]);
+        __block A55CardDeleteResponse* response;
+        ASYNC_BEGIN(deleteCards);
+        [[gateway deleteCard:card user:user] send:^(id r) {
+            response = r;
+            ASYNC_NOTIFY(deleteCards);
+        } error:^(id error) {
+            @throw [NSException exceptionWithName:NSInternalInconsistencyException
+                                           reason:[error description]
+                                         userInfo:nil];
+        }];
+        ASYNC_WAIT(deleteCards);
+        
+        printf("DONE\n");
+        
+        return response;
 }
 
 - (A55UserUpdateResponse*)updateUser:(A55User*)user {
-    printf("Updating user... ");
-    __block A55UserUpdateResponse* response;
-    ASYNC_BEGIN(updateUser);
-    [[gateway updateUser:user] send:^(id r) {
-        response = r;
-        ASYNC_NOTIFY(updateUser);
-    } error:^(id error) {
-        @throw [NSException exceptionWithName:NSInternalInconsistencyException
-                                       reason:[error description]
-                                     userInfo:nil];
-    }];
-    ASYNC_WAIT(updateUser);
-    printf("DONE\n");
-    return response;
+        printf("Updating user... ");
+        __block A55UserUpdateResponse* response;
+        ASYNC_BEGIN(updateUser);
+        [[gateway updateUser:user] send:^(id r) {
+            response = r;
+            ASYNC_NOTIFY(updateUser);
+        } error:^(id error) {
+            @throw [NSException exceptionWithName:NSInternalInconsistencyException
+                                           reason:[error description]
+                                         userInfo:nil];
+        }];
+        ASYNC_WAIT(updateUser);
+        printf("DONE\n");
+        return response;
 }
 
 - (A55UserAuthenticateResponse*)authenticateUser:(A55User*)user {
-    printf("Authenticating user... ");
-    __block A55UserAuthenticateResponse* response;
-    ASYNC_BEGIN(authenticateUser);
-    [[gateway authenticateUser:user] send:^(id r) {
-        response = r;
-        ASYNC_NOTIFY(authenticateUser);
-    } error:^(id error) {
-        @throw [NSException exceptionWithName:NSInternalInconsistencyException
-                                       reason:[error description]
-                                     userInfo:nil];
-    }];
-    ASYNC_WAIT(authenticateUser);
-    printf("DONE\n");
-    return response;
+        printf("Authenticating user... ");
+        __block A55UserAuthenticateResponse* response;
+        ASYNC_BEGIN(authenticateUser);
+        [[gateway authenticateUser:user] send:^(id r) {
+            response = r;
+            ASYNC_NOTIFY(authenticateUser);
+        } error:^(id error) {
+            @throw [NSException exceptionWithName:NSInternalInconsistencyException
+                                           reason:[error description]
+                                         userInfo:nil];
+        }];
+        ASYNC_WAIT(authenticateUser);
+        printf("DONE\n");
+        return response;
 }
 
 - (A55ScheduleCreateResponse*)createScheduleWithUser:(A55User*)_user card:(A55Card*)_card amount:(NSString*)amount {
-    NSDate *now = [NSDate date];
-    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-    [formatter setTimeZone:[NSTimeZone timeZoneWithName:@"UTC"]];
-    [formatter setDateFormat:@"yyyy-MM-dd"];
+        NSDate *now = [NSDate date];
+        NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+        [formatter setTimeZone:[NSTimeZone timeZoneWithName:@"UTC"]];
+        [formatter setDateFormat:@"yyyy-MM-dd"];
 
-    A55User *user = [A55User userWithIdentifier:_user.identifier];
-    A55Card *card = [A55Card cardWithToken:_card.token];
-    A55Transaction *transaction = [A55Transaction transactionWithAmount:@"0.10" currency:@"EUR" description:@"Scheduled Transaction"];
-    A55Schedule *schedule = [A55Schedule scheduleWithTimeUnit:@"daily" start:[formatter stringFromDate:now]];
-    
-    printf("Creating schedule... ");
-    
-    __block A55ScheduleCreateResponse* response;
-    ASYNC_BEGIN(createSchedule);
-    [[gateway createScheduleWithCard:card
-                                user:user
-                         transaction:transaction
-                            schedule:schedule] send:^(id r) {
-        response = r;
-        ASYNC_NOTIFY(createSchedule);
-    } error:^(id error) {
-        @throw [NSException exceptionWithName:NSInternalInconsistencyException
-                                       reason:[error description]
-                                     userInfo:nil];
-    }];
-    ASYNC_WAIT(createSchedule);
-    
-    printf("DONE (schedule %d)\n", [response.schedule.identifier intValue]);
-    return response;
+        A55User *user = [A55User userWithIdentifier:_user.identifier];
+        A55Card *card = [A55Card cardWithToken:_card.token];
+        A55Transaction *transaction = [A55Transaction transactionWithAmount:@"0.10" currency:@"EUR" description:@"Scheduled Transaction"];
+        A55Schedule *schedule = [A55Schedule scheduleWithTimeUnit:@"daily" start:[formatter stringFromDate:now]];
+        
+        printf("Creating schedule... ");
+        
+        __block A55ScheduleCreateResponse* response;
+        ASYNC_BEGIN(createSchedule);
+        [[gateway createScheduleWithCard:card
+                                    user:user
+                             transaction:transaction
+                                schedule:schedule] send:^(id r) {
+            response = r;
+            ASYNC_NOTIFY(createSchedule);
+        } error:^(id error) {
+            @throw [NSException exceptionWithName:NSInternalInconsistencyException
+                                           reason:[error description]
+                                         userInfo:nil];
+        }];
+        ASYNC_WAIT(createSchedule);
+        
+        printf("DONE (schedule %d)\n", [response.schedule.identifier intValue]);
+        return response;
 }
 
 - (A55ScheduleGetResponse*)getScheduleWithUser:(A55User*)_user schedule:(A55Schedule*)_schedule {
-    A55User *user = [A55User userWithIdentifier:_user.identifier];
-    A55Schedule *schedule = [A55Schedule scheduleWithIdentifier:_schedule.identifier];
-    
-    printf("Getting schedule... ");
-    
-    __block A55ScheduleGetResponse* response;
-    ASYNC_BEGIN(getSchedule);
-    [[gateway getScheduleWithUser:user
-                         schedule:schedule] send:^(id r) {
-        response = r;
-        ASYNC_NOTIFY(getSchedule);
-    } error:^(id error) {
-        @throw [NSException exceptionWithName:NSInternalInconsistencyException
-                                       reason:[error description]
-                                     userInfo:nil];
-    }];
-    ASYNC_WAIT(getSchedule);
-    
-    printf("DONE\n");
-    return response;
+        A55User *user = [A55User userWithIdentifier:_user.identifier];
+        A55Schedule *schedule = [A55Schedule scheduleWithIdentifier:_schedule.identifier];
+        
+        printf("Getting schedule... ");
+        
+        __block A55ScheduleGetResponse* response;
+        ASYNC_BEGIN(getSchedule);
+        [[gateway getScheduleWithUser:user
+                             schedule:schedule] send:^(id r) {
+            response = r;
+            ASYNC_NOTIFY(getSchedule);
+        } error:^(id error) {
+            @throw [NSException exceptionWithName:NSInternalInconsistencyException
+                                           reason:[error description]
+                                         userInfo:nil];
+        }];
+        ASYNC_WAIT(getSchedule);
+        
+        printf("DONE\n");
+        return response;
 }
 
 - (A55ScheduleUpdateResponse*)updateScheduleWithUser:(A55User*)_user card:(A55Card*)_card schedule:(A55Schedule*)_schedule {
-    A55User *user = [A55User userWithIdentifier:_user.identifier];
-    A55Card *card = [A55Card cardWithToken:_card.token];
-    A55Schedule *schedule = [A55Schedule scheduleWithIdentifier:_schedule.identifier end:_schedule.end];
-    
-    printf("Updating schedule... ");
-    
-    __block A55ScheduleUpdateResponse* response;
-    ASYNC_BEGIN(updateSchedule);
-    [[gateway updateScheduleWithCard:card
-                                user:user
-                            schedule:schedule] send:^(id r) {
-        response = r;
-        ASYNC_NOTIFY(updateSchedule);
-    } error:^(id error) {
-        @throw [NSException exceptionWithName:NSInternalInconsistencyException
-                                       reason:[error description]
-                                     userInfo:nil];
-    }];
-    ASYNC_WAIT(updateSchedule);
-    
-    printf("DONE\n");
-    return response;
+        A55User *user = [A55User userWithIdentifier:_user.identifier];
+        A55Card *card = [A55Card cardWithToken:_card.token];
+        A55Schedule *schedule = [A55Schedule scheduleWithIdentifier:_schedule.identifier end:_schedule.end];
+        
+        printf("Updating schedule... ");
+        
+        __block A55ScheduleUpdateResponse* response;
+        ASYNC_BEGIN(updateSchedule);
+        [[gateway updateScheduleWithCard:card
+                                    user:user
+                                schedule:schedule] send:^(id r) {
+            response = r;
+            ASYNC_NOTIFY(updateSchedule);
+        } error:^(id error) {
+            @throw [NSException exceptionWithName:NSInternalInconsistencyException
+                                           reason:[error description]
+                                         userInfo:nil];
+        }];
+        ASYNC_WAIT(updateSchedule);
+        
+        printf("DONE\n");
+        return response;
 }
 
 - (A55ScheduleListResponse*)listSchedules:(A55User*)_user active:(NSNumber*)active {
-    A55User *user = [A55User userWithIdentifier:_user.identifier];
-    
-    printf("Listing schedule... ");
-    
-    __block A55ScheduleListResponse* response;
-    ASYNC_BEGIN(listSchedules);
-    [[gateway listSchedules:user active:active] send:^(id r) {
-        response = r;
-        ASYNC_NOTIFY(listSchedules);
-    } error:^(id error) {
-        @throw [NSException exceptionWithName:NSInternalInconsistencyException
-                                       reason:[error description]
-                                     userInfo:nil];
-    }];
-    ASYNC_WAIT(listSchedules);
-    
-    printf("DONE (%lu schedules)\n", (unsigned long)response.schedules.count);
-    return response;
+        A55User *user = [A55User userWithIdentifier:_user.identifier];
+        
+        printf("Listing schedule... ");
+        
+        __block A55ScheduleListResponse* response;
+        ASYNC_BEGIN(listSchedules);
+        [[gateway listSchedules:user active:active] send:^(id r) {
+            response = r;
+            ASYNC_NOTIFY(listSchedules);
+        } error:^(id error) {
+            @throw [NSException exceptionWithName:NSInternalInconsistencyException
+                                           reason:[error description]
+                                         userInfo:nil];
+        }];
+        ASYNC_WAIT(listSchedules);
+        
+        printf("DONE (%lu schedules)\n", (unsigned long)response.schedules.count);
+        return response;
 }
 
 - (A55ScheduleListResponse*)listSchedules:(A55User*)user {
@@ -570,25 +552,25 @@ int main(int argc, const char * argv[]) {
 }
 
 - (A55ScheduleDeleteResponse*)deleteSchedule:(A55User*)_user schedule:(A55Schedule*)_schedule {
-    A55User *user = [A55User userWithIdentifier:_user.identifier];
-    A55Schedule *schedule = [A55Schedule scheduleWithIdentifier:_schedule.identifier];
-    
-    printf("Delete schedule... ");
-    
-    __block A55ScheduleDeleteResponse* response;
-    ASYNC_BEGIN(deleteSchedule);
-    [[gateway deleteScheduleWithUser:user schedule:schedule] send:^(id r) {
-        response = r;
-        ASYNC_NOTIFY(deleteSchedule);
-    } error:^(id error) {
-        @throw [NSException exceptionWithName:NSInternalInconsistencyException
-                                       reason:[error description]
-                                     userInfo:nil];
-    }];
-    ASYNC_WAIT(deleteSchedule);
-    
-    printf("DONE\n");
-    return response;
+        A55User *user = [A55User userWithIdentifier:_user.identifier];
+        A55Schedule *schedule = [A55Schedule scheduleWithIdentifier:_schedule.identifier];
+        
+        printf("Delete schedule... ");
+        
+        __block A55ScheduleDeleteResponse* response;
+        ASYNC_BEGIN(deleteSchedule);
+        [[gateway deleteScheduleWithUser:user schedule:schedule] send:^(id r) {
+            response = r;
+            ASYNC_NOTIFY(deleteSchedule);
+        } error:^(id error) {
+            @throw [NSException exceptionWithName:NSInternalInconsistencyException
+                                           reason:[error description]
+                                         userInfo:nil];
+        }];
+        ASYNC_WAIT(deleteSchedule);
+        
+        printf("DONE\n");
+        return response;
 }
 
 
@@ -598,7 +580,8 @@ int main(int argc, const char * argv[]) {
                                                                     source:nil
                                                                       type:nil
                                                                  ipAddress:@"127.0.0.1"
-                                                                     email:nil].transaction;
+                                                                     email:nil
+                                                              errorHandler:nil].transaction;
     [self commitTransaction:transaction];
     
     A55User *user = [self createUser].user;
@@ -631,82 +614,51 @@ int main(int argc, const char * argv[]) {
                                                     source:nil
                                                       type:nil
                                                  ipAddress:@"127.0.0.1"
-                                                     email:nil].transaction;
+                                                     email:nil
+                                              errorHandler:nil].transaction;
     [self commitTransaction:transaction];
 
     
-    [self multipleTransactionsWithUser:user card:card3 types:@"auth", @"capture", @"void", nil];
-    [self multipleTransactionsWithUser:user card:card3 types:@"auth", @"void", nil];
-    [self multipleTransactionsWithUser:user card:card3 types:@"sale", @"void", nil];
-    [self duplicateTransactionsWithUser:user card:card3 types:@"sale", @"sale", nil];
-    [self duplicateTransactionsWithUser:user card:card3 types:@"sale", @"auth", nil];
-    [self duplicateTransactionsWithUser:user card:card3 types:@"sale", @"capture", nil];
-    [self duplicateTransactionsWithUser:user card:card3 types:@"auth", @"sale", nil];
-    [self duplicateTransactionsWithUser:user card:card3 types:@"auth", @"sale", nil];
-    [self duplicateTransactionsWithUser:user card:card3 types:@"auth", @"auth", nil];
-    [self duplicateTransactionsWithUser:user card:card3 types:@"auth", @"capture", @"sale", nil];
-    [self duplicateTransactionsWithUser:user card:card3 types:@"auth", @"capture", @"auth", nil];
-    [self duplicateTransactionsWithUser:user card:card3 types:@"auth", @"capture", @"capture", nil];
-    [self duplicateTransactionsWithUser:user card:card3 types:@"sale", @"void", @"void", nil];
-    [self duplicateTransactionsWithUser:user card:card3 types:@"auth", @"void", @"void", nil];
-    [self duplicateTransactionsWithUser:user card:card3 types:@"auth", @"capture", @"void", @"void", nil];
-    @try {
-        [self multipleTransactionsWithUser:user card:card3 types:@"capture", nil];
+    [self multipleTransactionsWithUser:user card:card3 typeArray:[NSArray arrayWithObjects:@"auth", @"capture", @"void", nil]];
+    [self multipleTransactionsWithUser:user card:card3 typeArray:[NSArray arrayWithObjects:@"auth", @"void", nil]];
+    [self multipleTransactionsWithUser:user card:card3 typeArray:[NSArray arrayWithObjects:@"sale", @"void", nil]];
+    [self duplicateTransactionsWithUser:user card:card3 typeArray:[NSArray arrayWithObjects:@"sale", @"sale", nil]];
+    [self duplicateTransactionsWithUser:user card:card3 typeArray:[NSArray arrayWithObjects:@"sale", @"auth", nil]];
+    [self duplicateTransactionsWithUser:user card:card3 typeArray:[NSArray arrayWithObjects:@"sale", @"capture", nil]];
+    [self duplicateTransactionsWithUser:user card:card3 typeArray:[NSArray arrayWithObjects:@"auth", @"sale", nil]];
+    [self duplicateTransactionsWithUser:user card:card3 typeArray:[NSArray arrayWithObjects:@"auth", @"sale", nil]];
+    [self duplicateTransactionsWithUser:user card:card3 typeArray:[NSArray arrayWithObjects:@"auth", @"auth", nil]];
+    [self duplicateTransactionsWithUser:user card:card3 typeArray:[NSArray arrayWithObjects:@"auth", @"capture", @"sale", nil]];
+    [self duplicateTransactionsWithUser:user card:card3 typeArray:[NSArray arrayWithObjects:@"auth", @"capture", @"auth", nil]];
+    [self duplicateTransactionsWithUser:user card:card3 typeArray:[NSArray arrayWithObjects:@"auth", @"capture", @"capture", nil]];
+    [self duplicateTransactionsWithUser:user card:card3 typeArray:[NSArray arrayWithObjects:@"sale", @"void", @"void", nil]];
+    [self duplicateTransactionsWithUser:user card:card3 typeArray:[NSArray arrayWithObjects:@"auth", @"void", @"void", nil]];
+    [self duplicateTransactionsWithUser:user card:card3 typeArray:[NSArray arrayWithObjects:@"auth", @"capture", @"void", @"void", nil]];
+    if([self multipleTransactionsWithUser:user card:card3 typeArray:[NSArray arrayWithObjects:@"capture", nil]])
         @throw [NSException exceptionWithName:NSGenericException reason:@"Payment was authorised" userInfo:nil];
-    } @catch(NSException *exception) {
-        A55Exception *error = exception.userInfo[@"error"];
-        if(![error isKindOfClass:[A55CardException class]])
-            @throw [NSException exceptionWithName:NSGenericException reason:@"Other type of exception was thrown" userInfo:nil];
-        assert([error.message isEqualToString:@"The payment could not be processed."]);
-        printf("EXPECTED ERROR\n");
-    }
-    @try {
-        [self multipleTransactionsWithUser:user card:card3 types:@"void", nil];
+    if([self multipleTransactionsWithUser:user card:card3 typeArray:[NSArray arrayWithObjects:@"void", nil]])
         @throw [NSException exceptionWithName:NSGenericException reason:@"Payment was authorised" userInfo:nil];
-    } @catch(NSException *exception) {
-        A55Exception *error = exception.userInfo[@"error"];
-        if(![error isKindOfClass:[A55CardException class]])
-            @throw [NSException exceptionWithName:NSGenericException reason:@"Other type of exception was thrown" userInfo:nil];
-        assert([error.message isEqualToString:@"The payment could not be processed."]);
-        printf("EXPECTED ERROR\n");
-    }
     
-    [self multipleAnonymousTransactionsWithTypes:@"auth", @"capture", @"void", nil];
-    [self multipleAnonymousTransactionsWithTypes:@"auth", @"void", nil];
-    [self multipleAnonymousTransactionsWithTypes:@"sale", @"void", nil];
-    [self duplicateAnonymousTransactionsWithTypes:@"sale", @"sale", nil];
-    [self duplicateAnonymousTransactionsWithTypes:@"sale", @"auth", nil];
-    [self duplicateAnonymousTransactionsWithTypes:@"sale", @"capture", nil];
-    [self duplicateAnonymousTransactionsWithTypes:@"auth", @"sale", nil];
-    [self duplicateAnonymousTransactionsWithTypes:@"auth", @"sale", nil];
-    [self duplicateAnonymousTransactionsWithTypes:@"auth", @"auth", nil];
-    [self duplicateAnonymousTransactionsWithTypes:@"auth", @"capture", @"sale", nil];
-    [self duplicateAnonymousTransactionsWithTypes:@"auth", @"capture", @"auth", nil];
-    [self duplicateAnonymousTransactionsWithTypes:@"auth", @"capture", @"capture", nil];
-    [self duplicateAnonymousTransactionsWithTypes:@"sale", @"void", @"void", nil];
-    [self duplicateAnonymousTransactionsWithTypes:@"auth", @"void", @"void", nil];
-    [self duplicateAnonymousTransactionsWithTypes:@"auth", @"capture", @"void", @"void", nil];
-    @try {
-        [self multipleAnonymousTransactionsWithTypes:@"capture", nil];
+    [self multipleAnonymousTransactionsWithTypeArray:[NSArray arrayWithObjects:@"auth", @"capture", @"void", nil]];
+    [self multipleAnonymousTransactionsWithTypeArray:[NSArray arrayWithObjects:@"auth", @"void", nil]];
+    [self multipleAnonymousTransactionsWithTypeArray:[NSArray arrayWithObjects:@"sale", @"void", nil]];
+    [self duplicateAnonymousTransactionsWithTypeArray:[NSArray arrayWithObjects:@"sale", @"sale", nil]];
+    [self duplicateAnonymousTransactionsWithTypeArray:[NSArray arrayWithObjects:@"sale", @"auth", nil]];
+    [self duplicateAnonymousTransactionsWithTypeArray:[NSArray arrayWithObjects:@"sale", @"capture", nil]];
+    [self duplicateAnonymousTransactionsWithTypeArray:[NSArray arrayWithObjects:@"auth", @"sale", nil]];
+    [self duplicateAnonymousTransactionsWithTypeArray:[NSArray arrayWithObjects:@"auth", @"sale", nil]];
+    [self duplicateAnonymousTransactionsWithTypeArray:[NSArray arrayWithObjects:@"auth", @"auth", nil]];
+    [self duplicateAnonymousTransactionsWithTypeArray:[NSArray arrayWithObjects:@"auth", @"capture", @"sale", nil]];
+    [self duplicateAnonymousTransactionsWithTypeArray:[NSArray arrayWithObjects:@"auth", @"capture", @"auth", nil]];
+    [self duplicateAnonymousTransactionsWithTypeArray:[NSArray arrayWithObjects:@"auth", @"capture", @"capture", nil]];
+    [self duplicateAnonymousTransactionsWithTypeArray:[NSArray arrayWithObjects:@"sale", @"void", @"void", nil]];
+    [self duplicateAnonymousTransactionsWithTypeArray:[NSArray arrayWithObjects:@"auth", @"void", @"void", nil]];
+    [self duplicateAnonymousTransactionsWithTypeArray:[NSArray arrayWithObjects:@"auth", @"capture", @"void", @"void", nil]];
+    if([self multipleAnonymousTransactionsWithTypeArray:[NSArray arrayWithObjects:@"capture", nil]])
         @throw [NSException exceptionWithName:NSGenericException reason:@"Payment was authorised" userInfo:nil];
-    } @catch(NSException *exception) {
-        A55Exception *error = exception.userInfo[@"error"];
-        if(![error isKindOfClass:[A55CardException class]])
-            @throw [NSException exceptionWithName:NSGenericException reason:@"Other type of exception was thrown" userInfo:nil];
-        assert([error.message isEqualToString:@"The payment could not be processed."]);
-        printf("EXPECTED ERROR\n");
-    }
-    @try {
-        [self multipleAnonymousTransactionsWithTypes:@"void", nil];
+    if([self multipleAnonymousTransactionsWithTypeArray:[NSArray arrayWithObjects:@"void", nil]])
         @throw [NSException exceptionWithName:NSGenericException reason:@"Payment was authorised" userInfo:nil];
-    } @catch(NSException *exception) {
-        A55Exception *error = exception.userInfo[@"error"];
-        if(![error isKindOfClass:[A55CardException class]])
-            @throw [NSException exceptionWithName:NSGenericException reason:@"Other type of exception was thrown" userInfo:nil];
-        assert([error.message isEqualToString:@"The payment could not be processed."]);
-        printf("EXPECTED ERROR\n");
-    }
-    
+
     NSDate *tomorrow = [NSDate dateWithNaturalLanguageString:@"tomorrow"];
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
     [formatter setTimeZone:[NSTimeZone timeZoneWithName:@"UTC"]];

@@ -21,12 +21,19 @@
 
 - (id)initWithDictionary:(NSDictionary *)_dictionary gateway:(A55Gateway *)gateway {
     if(self = [super initWithDictionary:_dictionary gateway:gateway]) {
-        if(gateway.hasApiSecret) {
-            NSString *signature = [gateway sign:self];
-            if(![signature isEqualToString:self.signature])
-                  @throw [NSException exceptionWithName:@"A55InvalidSignatureException" reason:@"The response contained an invalid signature" userInfo:nil];
-        }       
     }
     return self;
 }
+
+- (BOOL)isValidSignatureForGateway:(A55Gateway*)gateway {
+    if(gateway.hasApiSecret) {
+        NSString *signature = [gateway sign:self];
+        if(![signature isEqualToString:self.signature]) {
+            return NO;
+        }
+    }
+    
+    return YES;
+}
+
 @end

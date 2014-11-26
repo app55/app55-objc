@@ -9,7 +9,7 @@
 #import "A55Card.h"
 
 @implementation A55Card
-@dynamic token, holderName, number, expiry, expiryMonth, expiryYear, securityCode, address, type, description, issue;
+@dynamic token, holderName, number, expiry, expiryMonth, expiryYear, securityCode, address, type, description, issue, valid;
 
 + (void)initialize {
     A55_INTERFACE
@@ -24,6 +24,7 @@
     A55_PROPERTY(NSString, type, type)
     A55_PROPERTY(NSString, description, description)
     A55_PROPERTY(NSString, issue, issue)
+    A55_PROPERTY(NSNumber, valid, valid)
     A55_END
 }
 
