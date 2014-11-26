@@ -32,6 +32,10 @@ Take a look through ```app55-integration/main.m```. The method at the end contro
 The following code creates an anonymous (guest) payment using dummy card data:
 
 ```objc
+A55Gateway *gateway = [A55Gateway gatewayWithEnvironment:[A55Environment environment:A55Sandbox]
+                                                                              apiKey:@"YOUR_API_KEY"
+                                                                           apiSecret:@"YOUR_API_SECRET"];
+
 A55Card *card = [A55Card cardWithHolderName:@"APP55 USER"
                                      number:@"4111111111111111"
                                      expiry:@"04/2019"
